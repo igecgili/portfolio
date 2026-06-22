@@ -11,7 +11,7 @@ interface TimelineItem {
   date: string;
   content: string;
   category: string;
-  icon: React.ElementType;
+  icon: React.FC<{ style?: React.CSSProperties }>;
   relatedIds: number[];
   status: "completed" | "in-progress" | "pending";
   energy: number;
@@ -202,7 +202,7 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                       : "bg-white text-black border-black/20 shadow-sm",
                   ].join(" ")}
                 >
-                  <Icon size={14} />
+                  <Icon style={{ width: 14, height: 14 }} />
                 </div>
 
                 {/* Etiket */}
