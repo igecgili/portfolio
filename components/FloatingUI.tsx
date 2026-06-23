@@ -43,14 +43,14 @@ export default function FloatingUI() {
       {/* Floating sticky nav — yukarı kaydırınca belirir */}
       <AnimatePresence>
         {showNav && (
+          <div style={{ position: "fixed", top: navTop, left: 0, right: 0, display: "flex", justifyContent: "center", zIndex: 999, pointerEvents: "none" }}>
           <motion.div
             initial={{ y: -80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -80, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             style={{
-              position: "fixed", top: navTop, left: "50%", transform: "translateX(-50%)",
-              zIndex: 999,
+              pointerEvents: "auto",
               background: "rgba(255,255,255,0.72)",
               backdropFilter: "blur(24px) saturate(180%)",
               WebkitBackdropFilter: "blur(24px) saturate(180%)",
@@ -78,6 +78,7 @@ export default function FloatingUI() {
               </a>
             ))}
           </motion.div>
+          </div>
         )}
       </AnimatePresence>
 
