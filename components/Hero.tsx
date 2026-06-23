@@ -101,7 +101,7 @@ export default function Hero() {
         <nav style={{
           position: "absolute", top: 0, left: 0, right: 0,
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "18px 20px", zIndex: 20,
+          padding: "18px 20px", zIndex: 100,
         }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "7px",
@@ -166,17 +166,17 @@ export default function Hero() {
         <img src="/photo_clean.png" alt="İsmail Geçgili" style={{
           position: "absolute", inset: 0, width: "100%", height: "100%",
           objectFit: "cover", objectPosition: "center top",
-          filter: "grayscale(1)",
+          filter: "grayscale(1)", zIndex: 1,
         }} />
 
         {/* Alt gradient — yazılar okunabilsin */}
         <div style={{
-          position: "absolute", inset: 0,
+          position: "absolute", inset: 0, zIndex: 2,
           background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0) 70%)",
         }} />
 
         {/* İçerik */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "0 24px 40px" }}>
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "0 24px 40px", zIndex: 10 }}>
           {/* Etiket */}
           <p style={{ fontSize: "11px", letterSpacing: "0.14em", color: "rgba(255,255,255,0.6)", fontWeight: 600, marginBottom: "12px" }}>
             TASARIMCI & AI ÜRETİCİSİ
