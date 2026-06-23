@@ -226,14 +226,20 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                 </div>
 
                 {/* Açılan kart */}
-                {isExpanded && (
+                {isExpanded && (() => {
+                  const openUp = pos.y < 0; // üst yarıysa yukarı aç
+                  const cardHeight = 260;
+                  return (
                   <div
                     className="absolute overflow-visible"
                     style={{
-                      top: 70,
+                      ...(openUp
+                        ? { bottom: 70, top: "auto" }
+                        : { top: 70 }),
                       left: "50%",
                       transform: "translateX(-50%)",
                       width: "260px",
+                      zIndex: 999,
                       background: "#0f0f0f",
                       borderRadius: "16px",
                       border: "1px solid rgba(255,255,255,0.12)",
@@ -242,7 +248,10 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                     }}
                   >
                     {/* Bağlantı çizgisi */}
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/30" />
+                    {openUp
+                      ? <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/30" />
+                      : <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/30" />
+                    }
 
                     {/* Üst satır */}
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
@@ -321,7 +330,8 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                       </div>
                     )}
                   </div>
-                )}
+                  );
+                })()}
               </div>
             );
           })}
