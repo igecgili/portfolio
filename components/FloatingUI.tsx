@@ -20,12 +20,12 @@ function NavLink({ href, label }: { href: string; label: string }) {
       onMouseLeave={() => setHovered(false)}
       style={{
         fontSize: "12px", fontWeight: 500,
-        color: hovered ? "#fff" : "rgba(255,255,255,0.75)",
+        color: hovered ? "#000" : "#444",
         textDecoration: "none", padding: "6px 14px",
         borderRadius: "999px", whiteSpace: "nowrap",
-        background: hovered ? "rgba(255,255,255,0.15)" : "transparent",
-        border: hovered ? "1px solid rgba(255,255,255,0.25)" : "1px solid transparent",
-        boxShadow: hovered ? "inset 0 1px 1px rgba(255,255,255,0.3)" : "none",
+        background: hovered ? "rgba(255,255,255,0.5)" : "transparent",
+        border: hovered ? "1px solid rgba(255,255,255,0.7)" : "1px solid transparent",
+        boxShadow: hovered ? "inset 0 1px 1px rgba(255,255,255,0.6)" : "none",
         transition: "all 0.25s ease",
         transform: hovered ? "scale(1.05)" : "scale(1)",
       }}
@@ -79,11 +79,11 @@ export default function FloatingUI() {
                 padding: "6px 8px",
                 display: "flex", alignItems: "center", gap: "2px",
                 borderRadius: "999px",
-                background: "rgba(0,0,0,0.35)",
+                background: "rgba(255,255,255,0.45)",
                 backdropFilter: "blur(20px) saturate(180%)",
                 WebkitBackdropFilter: "blur(20px) saturate(180%)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                boxShadow: "0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15)",
+                border: "1px solid rgba(255,255,255,0.6)",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8)",
               }}
             >
               {navLinks.map(([href, label]) => (
