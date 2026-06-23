@@ -226,63 +226,55 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                 </div>
 
                 {/* Açılan kart */}
-                {isExpanded && (() => {
-                  const openUp = pos.y < 0; // üst yarıysa yukarı aç
-                  const cardHeight = 260;
-                  return (
+                {isExpanded && (
                   <div
                     className="absolute overflow-visible"
                     style={{
-                      ...(openUp
-                        ? { bottom: 70, top: "auto" }
-                        : { top: 70 }),
+                      top: 70,
                       left: "50%",
                       transform: "translateX(-50%)",
-                      width: "260px",
+                      width: "220px",
                       zIndex: 999,
                       background: "#0f0f0f",
-                      borderRadius: "16px",
+                      borderRadius: "14px",
                       border: "1px solid rgba(255,255,255,0.12)",
                       boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
-                      padding: "20px 20px 18px",
+                      padding: "14px 16px 12px",
                     }}
                   >
                     {/* Bağlantı çizgisi */}
-                    {openUp
-                      ? <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/30" />
-                      : <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/30" />
-                    }
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/30" />
 
                     {/* Üst satır */}
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
                       <span
                         className={`inline-flex items-center rounded-md text-xs font-semibold border ${getStatusClass(item.status)}`}
-                        style={{ padding: "5px 12px", letterSpacing: "0.06em" }}
+                        style={{ padding: "3px 8px", letterSpacing: "0.06em", fontSize: "10px" }}
                       >
                         {getStatusLabel(item.status)}
                       </span>
-                      <span style={{ fontSize: "11px", fontFamily: "monospace", color: "rgba(255,255,255,0.4)" }}>
+                      <span style={{ fontSize: "10px", fontFamily: "monospace", color: "rgba(255,255,255,0.4)" }}>
                         {item.date}
                       </span>
                     </div>
 
                     {/* Başlık */}
-                    <p style={{ fontSize: "15px", fontWeight: 700, color: "#fff", marginBottom: "10px", lineHeight: 1.3 }}>
+                    <p style={{ fontSize: "13px", fontWeight: 700, color: "#fff", marginBottom: "6px", lineHeight: 1.3 }}>
                       {item.title}
                     </p>
 
                     {/* Açıklama */}
-                    <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: "16px" }}>
+                    <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, marginBottom: "10px" }}>
                       {item.content}
                     </p>
 
                     {/* Yeterlilik */}
-                    <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "14px", marginBottom: "14px" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
-                        <span style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "12px", color: "rgba(255,255,255,0.45)" }}>
-                          <Zap size={11} /> Yeterlilik
+                    <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "10px", marginBottom: "10px" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                        <span style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "10px", color: "rgba(255,255,255,0.45)" }}>
+                          <Zap size={10} /> Yeterlilik
                         </span>
-                        <span style={{ fontSize: "12px", fontFamily: "monospace", color: "rgba(255,255,255,0.45)" }}>
+                        <span style={{ fontSize: "10px", fontFamily: "monospace", color: "rgba(255,255,255,0.45)" }}>
                           {item.energy}%
                         </span>
                       </div>
@@ -330,8 +322,7 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                       </div>
                     )}
                   </div>
-                  );
-                })()}
+                )}
               </div>
             );
           })}
