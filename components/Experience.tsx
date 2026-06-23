@@ -37,7 +37,7 @@ const experiences = [
 ];
 
 const skills = ["Adobe Photoshop", "Adobe Illustrator", "Figma", "Corel Draw", "Texprint", "Microsoft Office"];
-const aiTools = ["Midjourney", "Kling", "Higgsfield", "Seedream", "Sora", "Nano Banana Pro"];
+const aiTools = ["Midjourney", "Kling", "Claude", "Seedream", "Sora", "Nano Banana Pro"];
 
 export default function Experience() {
   const ref = useRef(null);

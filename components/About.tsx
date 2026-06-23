@@ -14,7 +14,7 @@ const services = [
   },
   {
     title: "AI GÖRSEL ÜRETİMİ",
-    desc: "Midjourney, Kling, Higgsfield, Seedream ve Sora gibi araçlarla ürünün formunu, dokusunu ve kullanım hissini doğru şekilde aktaran, ticari sunuma hazır görseller tasarlıyorum.",
+    desc: "Midjourney, Kling, Claude, Seedream ve Sora gibi araçlarla ürünün formunu, dokusunu ve kullanım hissini doğru şekilde aktaran, ticari sunuma hazır görseller tasarlıyorum.",
   },
   {
     title: "KURUMSAL KİMLİK",
