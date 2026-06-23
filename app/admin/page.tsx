@@ -85,13 +85,19 @@ function MediaUploader({ media, onChange }: { media: MediaItem[]; onChange: (m: 
 
       const fd = new FormData();
       fd.append("file", file);
+      fd.append("upload_preset", "portfolio_upload");
+      fd.append("cloud_name", "dqilpsjcc");
+
+      const isVideo = file.type.startsWith("video/");
+      const endpoint = isVideo
+        ? "https://api.cloudinary.com/v1_1/dqilpsjcc/video/upload"
+        : "https://api.cloudinary.com/v1_1/dqilpsjcc/image/upload";
 
       try {
-        const res = await fetch("/api/upload", { method: "POST", body: fd });
+        const res = await fetch(endpoint, { method: "POST", body: fd });
         const data = await res.json();
-        if (data.url) {
-          const isVideo = file.type.startsWith("video/");
-          results.push({ type: isVideo ? "video" : "image", url: data.url, name: file.name });
+        if (data.secure_url) {
+          results.push({ type: isVideo ? "video" : "image", url: data.secure_url, name: file.name });
         }
       } catch {
         console.error("Yükleme hatası:", file.name);
