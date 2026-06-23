@@ -88,7 +88,7 @@ export default function Hero() {
       <section
         id="hero"
         style={{
-          background: "#111",
+          background: "#fff",
           borderRadius: "20px",
           margin: "8px",
           overflow: "hidden",
@@ -158,17 +158,19 @@ export default function Hero() {
           )}
         </AnimatePresence>
 
-        {/* Tam ekran fotoğraf — siyah beyaz */}
+        {/* Tam ekran fotoğraf — siyah beyaz, siyah arka plan beyazla karışır */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/photo2.png" alt="İsmail Geçgili" style={{
           position: "absolute", inset: 0, width: "100%", height: "100%",
-          objectFit: "cover", objectPosition: "center top", filter: "grayscale(1)",
+          objectFit: "cover", objectPosition: "center top",
+          filter: "grayscale(1)",
+          mixBlendMode: "multiply",
         }} />
 
-        {/* Gradient overlay — alttan yukarı, beyaz üzerine */}
+        {/* Alt gradient — beyazdan içeriğe geçiş */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 30%, rgba(255,255,255,0) 65%)",
+          background: "linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 35%, rgba(255,255,255,0) 60%)",
         }} />
 
         {/* İçerik */}
