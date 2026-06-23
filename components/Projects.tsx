@@ -201,39 +201,19 @@ export default function Projects() {
                       GERÇEK PROJE
                     </div>
                   )}
-                  {/* Hover overlay — sadece video olmayan kartlarda */}
-                  {thumb?.type !== "video" && (
-                    <div className="project-card-overlay" style={{
-                      position: "absolute", inset: 0,
-                      background: "rgba(0,0,0,0.55)",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      opacity: 0, transition: "opacity 0.25s ease",
+                  {/* Hover — tüm kartlarda sağ altta İncele butonu */}
+                  <div className="project-card-overlay" style={{
+                    position: "absolute", bottom: "12px", right: "12px",
+                    opacity: 0, transition: "opacity 0.25s ease",
+                  }}>
+                    <div style={{
+                      padding: "6px 14px", borderRadius: "999px",
+                      background: "#fff", color: "#111",
+                      fontSize: "11px", fontWeight: 700,
                     }}>
-                      <div style={{
-                        display: "flex", alignItems: "center", gap: "8px",
-                        padding: "11px 24px", borderRadius: "999px",
-                        background: "#fff", color: "#111",
-                        fontSize: "13px", fontWeight: 700,
-                      }}>
-                        İncele ↗
-                      </div>
+                      İncele ↗
                     </div>
-                  )}
-                  {/* Video kartlar için küçük incele butonu */}
-                  {thumb?.type === "video" && (
-                    <div className="project-card-overlay" style={{
-                      position: "absolute", bottom: "12px", right: "12px",
-                      opacity: 0, transition: "opacity 0.25s ease",
-                    }}>
-                      <div style={{
-                        padding: "6px 14px", borderRadius: "999px",
-                        background: "#fff", color: "#111",
-                        fontSize: "11px", fontWeight: 700,
-                      }}>
-                        İncele ↗
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
 
                 {/* Bilgi */}
