@@ -75,6 +75,7 @@ export default function Hakkimda() {
     <section
       id="hakkimda"
       ref={ref}
+      className="hakkimda-section"
       style={{
         background: "#fff",
         borderRadius: "20px",

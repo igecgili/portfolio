@@ -51,4 +51,7 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
     grid-template-columns: 1fr !important;
     gap: 40px !important;
   }
+  .hakkimda-section {
+    padding: 40px 20px !important;
+  }
 }

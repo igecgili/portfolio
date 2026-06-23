@@ -21,7 +21,7 @@ interface RadialOrbitalTimelineProps {
   timelineData: TimelineItem[];
 }
 
-const RADIUS = 160;
+const BASE_RADIUS = 160;
 const TOP_ANGLE = 270; // 12 o'clock in standard math coords
 
 function easeInOut(t: number) {
@@ -32,8 +32,17 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
   const [mounted, setMounted] = useState(false);
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [rotationAngle, setRotationAngle] = useState<number>(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const RADIUS = isMobile ? 110 : BASE_RADIUS;
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
   const [pulseIds, setPulseIds] = useState<Set<number>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
@@ -127,14 +136,14 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
       ? "text-black bg-white border-white"
       : "text-white/60 bg-transparent border-white/25";
 
-  if (!mounted) return <div style={{ height: "420px" }} />;
+  if (!mounted) return <div style={{ height: isMobile ? "300px" : "420px" }} />;
 
   return (
     <div
       ref={containerRef}
       onClick={handleBgClick}
       className="w-full flex items-center justify-center overflow-hidden"
-      style={{ height: "420px", borderRadius: "16px", background: "transparent" }}
+      style={{ height: isMobile ? "300px" : "420px", borderRadius: "16px", background: "transparent" }}
     >
       <div className="relative w-full max-w-2xl h-full flex items-center justify-center">
         <div
@@ -194,7 +203,8 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                 {/* Node */}
                 <div
                   className={[
-                    "w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300",
+                    "rounded-full flex items-center justify-center border-2 transition-all duration-300",
+                    isMobile ? "w-8 h-8" : "w-10 h-10",
                     isExpanded
                       ? "bg-black text-white border-black scale-150 shadow-lg shadow-black/20"
                       : isRelated
@@ -202,15 +212,15 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                       : "bg-white text-black border-black/20 shadow-sm",
                   ].join(" ")}
                 >
-                  <Icon style={{ width: 14, height: 14 }} />
+                  <Icon style={{ width: isMobile ? 11 : 14, height: isMobile ? 11 : 14 }} />
                 </div>
 
                 {/* Etiket */}
                 <div
-                  className={`absolute whitespace-nowrap text-xs font-semibold tracking-wider transition-all duration-300 ${
+                  className={`absolute whitespace-nowrap font-semibold tracking-wider transition-all duration-300 ${
                     isExpanded ? "text-black" : "text-black/60"
                   }`}
-                  style={{ top: 46, left: "50%", transform: "translateX(-50%)" }}
+                  style={{ fontSize: isMobile ? "9px" : "12px", top: isMobile ? 36 : 46, left: "50%", transform: "translateX(-50%)" }}
                 >
                   {item.title}
                 </div>
