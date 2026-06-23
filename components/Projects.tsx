@@ -203,12 +203,12 @@ export default function Projects() {
                 </div>
 
                 {/* Bilgi */}
-                <div style={{ padding: "16px 20px", background: "#fff" }}>
+                <div style={{ padding: "16px 20px", background: "#fff", minHeight: "120px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                   <p style={{ fontWeight: 600, fontSize: "15px", color: "#111", marginBottom: "6px", lineHeight: 1.3 }}>
                     {p.title}
                   </p>
                   {p.description && (
-                    <p style={{ fontSize: "12px", color: "#888", lineHeight: 1.6, marginBottom: "10px" }}>{p.description}</p>
+                    <p style={{ fontSize: "12px", color: "#888", lineHeight: 1.6, marginBottom: "10px", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical" as const, overflow: "hidden" }}>{p.description}</p>
                   )}
                   <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                     {p.tags.map(t => (
