@@ -68,18 +68,22 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
           )}
         </div>
 
-        {/* Gezinme + bilgi */}
-        <div style={{ padding: "16px 24px", borderTop: "1px solid #222", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <p style={{ fontSize: "13px", color: "#666", lineHeight: 1.6, maxWidth: "60%" }}>{project.description}</p>
-          {items.length > 1 && (
-            <div style={{ display: "flex", gap: "8px" }}>
-              <button onClick={() => setIdx(i => Math.max(i - 1, 0))} disabled={idx === 0}
-                style={{ padding: "8px 16px", borderRadius: "8px", border: "1px solid #333", background: "none", color: idx === 0 ? "#444" : "#fff", cursor: idx === 0 ? "default" : "pointer" }}>←</button>
-              <button onClick={() => setIdx(i => Math.min(i + 1, items.length - 1))} disabled={idx === items.length - 1}
-                style={{ padding: "8px 16px", borderRadius: "8px", border: "1px solid #333", background: "none", color: idx === items.length - 1 ? "#444" : "#fff", cursor: idx === items.length - 1 ? "default" : "pointer" }}>→</button>
-            </div>
-          )}
-        </div>
+        {/* Açıklama — scroll edilebilir */}
+        {project.description && (
+          <div style={{ padding: "14px 24px", borderTop: "1px solid #222", maxHeight: "120px", overflowY: "auto" }}>
+            <p style={{ fontSize: "13px", color: "#888", lineHeight: 1.7, margin: 0 }}>{project.description}</p>
+          </div>
+        )}
+
+        {/* Gezinme */}
+        {items.length > 1 && (
+          <div style={{ padding: "12px 24px", borderTop: "1px solid #222", display: "flex", justifyContent: "flex-end", gap: "8px" }}>
+            <button onClick={() => setIdx(i => Math.max(i - 1, 0))} disabled={idx === 0}
+              style={{ padding: "8px 16px", borderRadius: "8px", border: "1px solid #333", background: "none", color: idx === 0 ? "#444" : "#fff", cursor: idx === 0 ? "default" : "pointer" }}>←</button>
+            <button onClick={() => setIdx(i => Math.min(i + 1, items.length - 1))} disabled={idx === items.length - 1}
+              style={{ padding: "8px 16px", borderRadius: "8px", border: "1px solid #333", background: "none", color: idx === items.length - 1 ? "#444" : "#fff", cursor: idx === items.length - 1 ? "default" : "pointer" }}>→</button>
+          </div>
+        )}
       </motion.div>
     </motion.div>
   );
