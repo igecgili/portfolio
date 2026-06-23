@@ -51,9 +51,9 @@ const skillsData = [
     category: "AI", icon: Image, relatedIds: [5], status: "in-progress" as const, energy: 78,
   },
   {
-    id: 8, title: "Higgsfield", date: "2024+",
-    content: "Gerçekçi AI model ve ürün fotoğrafı üretimi.",
-    category: "AI", icon: Bot, relatedIds: [6, 7], status: "in-progress" as const, energy: 70,
+    id: 8, title: "Claude", date: "2024+",
+    content: "Strateji, içerik ve tasarım kararlarında yapay zeka destekli düşünce ortağı.",
+    category: "AI", icon: Zap, relatedIds: [5, 9], status: "completed" as const, energy: 95,
   },
   {
     id: 9, title: "Nano Banana", date: "2024+",
