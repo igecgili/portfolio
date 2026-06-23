@@ -160,73 +160,59 @@ export default function Hero() {
           )}
         </AnimatePresence>
 
-        {/* ANA İÇERİK — fotoğraf sağda tam yükseklik, sol içerik dikey */}
-        <div style={{ flex: 1, display: "flex", gap: "12px", padding: "0 20px 32px", minHeight: 0 }}>
+        {/* ANA İÇERİK */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", padding: "0 20px 32px", gap: "24px" }}>
 
-          {/* Sol — tam yüksekliği kaplayan flex kolon */}
-          <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-            {/* Üst: etiket + isim */}
-            <div>
-              <p style={{ fontSize: "11px", letterSpacing: "0.12em", color: "#aaa", fontWeight: 600, marginBottom: "12px" }}>
-                / PORTFOLIO
-              </p>
+          {/* Üst blok: isim sol + fotoğraf sağ */}
+          <div style={{ display: "flex", gap: "12px", alignItems: "stretch" }}>
+            {/* Sol: isim */}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p style={{ fontSize: "11px", letterSpacing: "0.12em", color: "#aaa", fontWeight: 600, marginBottom: "10px" }}>/ PORTFOLIO</p>
               <FitText><span style={{ color: "#111" }}>İSMAİL</span></FitText>
               <div style={{ marginTop: "4px" }}>
                 <FitText><span style={{ color: "transparent", WebkitTextStroke: "2px #111" }}>GEÇGİLİ</span></FitText>
               </div>
             </div>
-
-            {/* Orta: istatistikler */}
-            <div style={{ display: "flex", gap: "16px" }}>
-              {[["10+", "Yıl"], ["50+", "Proje"], ["5", "Şirket"]].map(([val, lbl]) => (
-                <div key={lbl}>
-                  <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "20px", color: "#111", letterSpacing: "-0.04em", marginBottom: "2px" }}>{val}</p>
-                  <p style={{ fontSize: "10px", color: "#aaa", fontWeight: 500 }}>{lbl}</p>
-                </div>
-              ))}
+            {/* Sağ: fotoğraf — isimle aynı yükseklikte */}
+            <div style={{ width: "38%", flexShrink: 0, borderRadius: "14px", overflow: "hidden", background: "#f0f0f0" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/photo2.png" alt="İsmail Geçgili"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", filter: "grayscale(1)" }} />
             </div>
+          </div>
 
-            {/* Alt: başlık + butonlar */}
-            <div>
-              <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "13px", color: "#111", marginBottom: "4px" }}>
-                Tasarımcı & AI Üreticisi
-              </p>
-              <p style={{ fontSize: "11px", color: "#888", lineHeight: 1.6, marginBottom: "14px" }}>
-                Grafik tasarım ve yapay zeka araçlarını birleştirerek ticari değer yaratan işler üretiyorum.
-              </p>
+          {/* İstatistikler */}
+          <div style={{ display: "flex", gap: "20px", borderTop: "1px solid #f0f0f0", paddingTop: "20px" }}>
+            {[["10+", "Yıl Deneyim"], ["50+", "Proje"], ["5", "Şirket"]].map(([val, lbl]) => (
+              <div key={lbl}>
+                <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "22px", color: "#111", letterSpacing: "-0.04em", marginBottom: "2px" }}>{val}</p>
+                <p style={{ fontSize: "10px", color: "#aaa", fontWeight: 500 }}>{lbl}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Alt bilgi */}
+          <div style={{ borderTop: "1px solid #f0f0f0", paddingTop: "20px" }}>
+            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "14px", color: "#111", marginBottom: "6px" }}>Tasarımcı & AI Üreticisi</p>
+            <p style={{ fontSize: "12px", color: "#888", lineHeight: 1.7, marginBottom: "16px" }}>
+              Grafik tasarım ve yapay zeka araçlarını birleştirerek ticari değer yaratan işler üretiyorum.
+            </p>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <a href="#contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "6px",
-                padding: "10px 18px", borderRadius: "999px",
-                background: "#111", color: "#fff", textDecoration: "none", fontSize: "12px", fontWeight: 600,
-                marginBottom: "12px",
+                padding: "11px 20px", borderRadius: "999px",
+                background: "#111", color: "#fff", textDecoration: "none", fontSize: "13px", fontWeight: 600,
               }}>Birlikte Çalışalım ↗</a>
               <div style={{ display: "flex", gap: "8px" }}>
                 {socials.map(({ label, icon, href }) => (
                   <a key={label} href={href} title={label} style={{
                     display: "inline-flex", alignItems: "center", justifyContent: "center",
-                    width: "34px", height: "34px", borderRadius: "50%",
-                    border: "1px solid #e0e0e0", background: "#fff",
-                    color: "#555", textDecoration: "none",
-                  }}>
-                    {icon}
-                  </a>
+                    width: "36px", height: "36px", borderRadius: "50%",
+                    border: "1px solid #e0e0e0", color: "#555", textDecoration: "none",
+                  }}>{icon}</a>
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* Sağ — fotoğraf tam yükseklik */}
-          <div style={{
-            width: "40%", flexShrink: 0,
-            borderRadius: "16px", overflow: "hidden",
-            background: "#f0f0f0",
-          }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/photo2.png"
-              alt="İsmail Geçgili"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", filter: "grayscale(1)" }}
-            />
           </div>
         </div>
       </section>
