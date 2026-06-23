@@ -158,19 +158,18 @@ export default function Hero() {
           )}
         </AnimatePresence>
 
-        {/* Tam ekran fotoğraf — siyah beyaz, siyah arka plan beyazla karışır */}
+        {/* Tam ekran fotoğraf — beyaz arka planlı */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/photo2.png" alt="İsmail Geçgili" style={{
+        <img src="/photo_clean.png" alt="İsmail Geçgili" style={{
           position: "absolute", inset: 0, width: "100%", height: "100%",
           objectFit: "cover", objectPosition: "center top",
           filter: "grayscale(1)",
-          mixBlendMode: "multiply",
         }} />
 
-        {/* Alt gradient — beyazdan içeriğe geçiş */}
+        {/* Alt gradient — beyazdan içeriğe yumuşak geçiş */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 35%, rgba(255,255,255,0) 60%)",
+          background: "linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 25%, rgba(255,255,255,0) 55%)",
         }} />
 
         {/* İçerik */}
