@@ -5,11 +5,9 @@ import { useRef } from "react";
 
 const socials = [
   { label: "E-posta", href: "mailto:igecgili@gmail.com" },
-  { label: "Telefon", href: "tel:+905535017666" },
-  { label: "Portfolio", href: "https://ismailgecgili.myportfolio.com" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Dribbble", href: "#" },
-  { label: "Behance", href: "#" },
+  { label: "WhatsApp", href: "https://wa.me/905535017666" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ismailgecgili/" },
+  { label: "Behance", href: "https://www.behance.net/ismailgecgili" },
 ];
 
 export default function Contact() {
