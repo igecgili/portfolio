@@ -45,3 +45,10 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
   color: #111;
 }
 .section-label::before { content: '/'; color: #bbb; margin-right: 3px; }
+
+@media (max-width: 767px) {
+  .hakkimda-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}

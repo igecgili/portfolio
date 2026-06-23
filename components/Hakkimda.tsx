@@ -90,6 +90,7 @@ export default function Hakkimda() {
           gap: "60px",
           alignItems: "start",
         }}
+        className="hakkimda-grid"
       >
         {/* Sol — metin */}
         <div>
