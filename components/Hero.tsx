@@ -85,23 +85,12 @@ export default function Hero() {
 
   if (isMobile) {
     return (
-      <section
-        id="hero"
-        style={{
-          background: "#fff",
-          borderRadius: "20px",
-          margin: "8px",
-          overflow: "hidden",
-          height: "calc(100svh - 16px)",
-          minHeight: "580px",
-          position: "relative",
-        }}
-      >
-        {/* NAV */}
+      <div id="hero" style={{ position: "relative", margin: "8px" }}>
+        {/* NAV — section dışında, overflow:hidden etkilemiyor */}
         <nav style={{
           position: "absolute", top: 0, left: 0, right: 0,
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "18px 20px", zIndex: 100,
+          padding: "18px 20px", zIndex: 200,
         }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "7px",
@@ -161,6 +150,11 @@ export default function Hero() {
           )}
         </AnimatePresence>
 
+        <section style={{
+          background: "#fff", borderRadius: "20px", overflow: "hidden",
+          height: "calc(100svh - 16px)", minHeight: "580px", position: "relative",
+        }}>
+
         {/* Tam ekran fotoğraf — beyaz arka planlı */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/photo_clean.png" alt="İsmail Geçgili" style={{
@@ -218,7 +212,8 @@ export default function Hero() {
             </a>
           </div>
         </div>
-      </section>
+        </section>
+      </div>
     );
   }
 
