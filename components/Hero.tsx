@@ -88,72 +88,42 @@ export default function Hero() {
       <section
         id="hero"
         style={{
+          background: "#fff",
           borderRadius: "20px",
           margin: "8px",
           overflow: "hidden",
           height: "calc(100svh - 16px)",
-          minHeight: "600px",
+          minHeight: "580px",
+          display: "flex",
+          flexDirection: "column",
           position: "relative",
-          background: "#111",
         }}
       >
-        {/* Tam ekran fotoğraf */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/photo2.png"
-          alt="İsmail Geçgili"
-          style={{
-            position: "absolute", inset: 0,
-            width: "100%", height: "100%",
-            objectFit: "cover", objectPosition: "top center",
-            filter: "grayscale(1)",
-          }}
-        />
-
-        {/* Üst karartma (nav için) */}
-        <div style={{
-          position: "absolute", top: 0, left: 0, right: 0, height: "160px",
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%)",
-          zIndex: 5,
-        }} />
-
-        {/* Alt karartma (içerik için) */}
-        <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0, height: "65%",
-          background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, transparent 100%)",
-          zIndex: 5,
-        }} />
-
         {/* NAV */}
         <nav style={{
-          position: "absolute", top: 0, left: 0, right: 0,
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "20px 20px", zIndex: 10,
+          padding: "18px 20px", flexShrink: 0, zIndex: 10,
         }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "7px",
             padding: "6px 14px", borderRadius: "999px",
-            background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255,255,255,0.2)",
-            fontSize: "11px", fontWeight: 500, color: "#fff",
+            border: "1px solid #e0e0e0", fontSize: "11px", fontWeight: 500, color: "#555",
           }}>
             <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
             Available for New Project
           </div>
 
-          {/* Hamburger */}
           <button
             onClick={() => setMenuOpen(o => !o)}
             style={{
-              background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)",
-              border: "1px solid rgba(255,255,255,0.2)",
-              borderRadius: "12px", cursor: "pointer", padding: "10px 12px",
+              background: "none", border: "1px solid #e0e0e0",
+              borderRadius: "10px", cursor: "pointer", padding: "9px 11px",
               display: "flex", flexDirection: "column", gap: "5px",
             }}
           >
-            <span style={{ width: 20, height: 2, background: "#fff", display: "block", borderRadius: 2, transition: "all .2s", transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none" }} />
-            <span style={{ width: 20, height: 2, background: "#fff", display: "block", borderRadius: 2, transition: "all .2s", opacity: menuOpen ? 0 : 1 }} />
-            <span style={{ width: 20, height: 2, background: "#fff", display: "block", borderRadius: 2, transition: "all .2s", transform: menuOpen ? "rotate(-45deg) translateY(-7px)" : "none" }} />
+            <span style={{ width: 20, height: 2, background: "#111", display: "block", borderRadius: 2, transition: "all .2s", transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none" }} />
+            <span style={{ width: 20, height: 2, background: "#111", display: "block", borderRadius: 2, transition: "all .2s", opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ width: 20, height: 2, background: "#111", display: "block", borderRadius: 2, transition: "all .2s", transform: menuOpen ? "rotate(-45deg) translateY(-7px)" : "none" }} />
           </button>
         </nav>
 
@@ -161,28 +131,26 @@ export default function Hero() {
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              exit={{ opacity: 0, y: -8 }}
               style={{
-                position: "absolute", top: "72px", left: "12px", right: "12px",
-                background: "rgba(15,15,15,0.95)", backdropFilter: "blur(20px)",
-                borderRadius: "16px", zIndex: 20, padding: "8px 0",
-                border: "1px solid rgba(255,255,255,0.1)",
+                position: "absolute", top: "68px", left: "12px", right: "12px",
+                background: "#fff", borderRadius: "16px", zIndex: 20, padding: "8px 0",
+                border: "1px solid #e8e8e8", boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
               }}
             >
               {navLinks.map(([href, label]) => (
                 <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{
-                  fontSize: "15px", color: "#fff", textDecoration: "none", fontWeight: 500,
-                  padding: "14px 20px", display: "block",
-                  borderBottom: "1px solid rgba(255,255,255,0.06)",
+                  fontSize: "15px", color: "#111", textDecoration: "none", fontWeight: 500,
+                  padding: "13px 20px", display: "block", borderBottom: "1px solid #f5f5f5",
                 }}>{label}</a>
               ))}
               <div style={{ padding: "12px 16px" }}>
                 <a href="https://wa.me/905535017666" target="_blank" rel="noreferrer" style={{
                   display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
-                  padding: "13px 22px", borderRadius: "12px",
-                  background: "#fff", color: "#111", textDecoration: "none", fontSize: "14px", fontWeight: 700,
+                  padding: "13px", borderRadius: "12px",
+                  background: "#111", color: "#fff", textDecoration: "none", fontSize: "14px", fontWeight: 700,
                 }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.508 5.837L.057 23.25a.75.75 0 0 0 .916.921l5.562-1.479A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.714 9.714 0 0 1-4.95-1.355l-.354-.212-3.664.973.986-3.587-.231-.371A9.712 9.712 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
                   İletişime Geç ↗
@@ -192,45 +160,64 @@ export default function Hero() {
           )}
         </AnimatePresence>
 
-        {/* Alt içerik */}
-        <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0,
-          zIndex: 10, padding: "0 24px 36px",
-        }}>
-          {/* İsim */}
-          <div style={{ marginBottom: "16px" }}>
-            <FitText>
-              <span style={{ color: "transparent", WebkitTextStroke: "2px #fff" }}>İSMAİL</span>
-              <span style={{ color: "#fff" }}>GEÇGİLİ</span>
-            </FitText>
+        {/* ANA İÇERİK */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "32px 20px 36px" }}>
+
+          {/* İsim — sola hizalı alt alta */}
+          <div>
+            <p style={{ fontSize: "12px", letterSpacing: "0.12em", color: "#aaa", fontWeight: 600, marginBottom: "20px" }}>
+              / PORTFOLIO
+            </p>
+            <h1 style={{
+              fontFamily: "'Syne', sans-serif", fontWeight: 800,
+              fontSize: "clamp(52px, 18vw, 88px)",
+              letterSpacing: "-0.04em", lineHeight: 0.9,
+              color: "#111", margin: 0,
+            }}>
+              İSMAİL
+            </h1>
+            <h1 style={{
+              fontFamily: "'Syne', sans-serif", fontWeight: 800,
+              fontSize: "clamp(52px, 18vw, 88px)",
+              letterSpacing: "-0.04em", lineHeight: 0.9,
+              color: "transparent", WebkitTextStroke: "2px #111",
+              margin: "4px 0 0 0",
+            }}>
+              GEÇGİLİ
+            </h1>
           </div>
 
-          {/* Başlık + buton + sosyal */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "16px" }}>
-            <div>
-              <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "14px", color: "rgba(255,255,255,0.9)", marginBottom: "12px", letterSpacing: "-0.01em" }}>
-                Tasarımcı & AI Üreticisi
-              </p>
+          {/* Alt bilgi */}
+          <div>
+            <p style={{
+              fontFamily: "'Syne', sans-serif", fontWeight: 700,
+              fontSize: "16px", color: "#111", marginBottom: "6px",
+            }}>
+              Tasarımcı & AI Üreticisi
+            </p>
+            <p style={{ fontSize: "13px", color: "#888", lineHeight: 1.7, marginBottom: "24px" }}>
+              Grafik tasarım ve yapay zeka araçlarını<br />birleştirerek ticari değer yaratan işler üretiyorum.
+            </p>
+
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <a href="#contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "6px",
-                padding: "10px 20px", borderRadius: "999px",
-                background: "#fff", color: "#111", textDecoration: "none", fontSize: "13px", fontWeight: 700,
+                padding: "12px 22px", borderRadius: "999px",
+                background: "#111", color: "#fff", textDecoration: "none", fontSize: "13px", fontWeight: 600,
               }}>Birlikte Çalışalım ↗</a>
-            </div>
 
-            {/* Sosyal ikonlar — dikey */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              {socials.map(({ label, icon, href }) => (
-                <a key={label} href={href} title={label} style={{
-                  display: "inline-flex", alignItems: "center", justifyContent: "center",
-                  width: "38px", height: "38px", borderRadius: "50%",
-                  background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  color: "#fff", textDecoration: "none",
-                }}>
-                  {icon}
-                </a>
-              ))}
+              <div style={{ display: "flex", gap: "8px" }}>
+                {socials.map(({ label, icon, href }) => (
+                  <a key={label} href={href} title={label} style={{
+                    display: "inline-flex", alignItems: "center", justifyContent: "center",
+                    width: "38px", height: "38px", borderRadius: "50%",
+                    border: "1px solid #e0e0e0", background: "#fff",
+                    color: "#555", textDecoration: "none",
+                  }}>
+                    {icon}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
