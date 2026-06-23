@@ -11,27 +11,6 @@ const navLinks = [
   ["#contact", "İletişim"],
 ];
 
-function GlassFilter() {
-  return (
-    <svg style={{ display: "none" }}>
-      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
-        <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence" />
-        <feComponentTransfer in="turbulence" result="mapped">
-          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-        </feComponentTransfer>
-        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-        <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lightingColor="white" result="specLight">
-          <fePointLight x="-200" y="-200" z="300" />
-        </feSpecularLighting>
-        <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
-        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="200" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-    </svg>
-  );
-}
-
 function LiquidGlassLink({ href, label }: { href: string; label: string }) {
   const [hovered, setHovered] = useState(false);
 
@@ -51,38 +30,20 @@ function LiquidGlassLink({ href, label }: { href: string; label: string }) {
         borderRadius: "999px",
         whiteSpace: "nowrap",
         transition: "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 2.2)",
-        boxShadow: hovered ? "0 6px 12px rgba(0,0,0,0.15), 0 0 20px rgba(0,0,0,0.08)" : "none",
+        transform: hovered ? "scale(1.06)" : "scale(1)",
+        isolation: "isolate",
         overflow: "hidden",
+        /* Liquid glass on hover */
+        background: hovered ? "rgba(255,255,255,0.35)" : "transparent",
+        backdropFilter: hovered ? "blur(12px) saturate(180%)" : "none",
+        WebkitBackdropFilter: hovered ? "blur(12px) saturate(180%)" : "none",
+        boxShadow: hovered
+          ? "inset 2px 2px 1px rgba(255,255,255,0.7), inset -1px -1px 1px rgba(255,255,255,0.4), 0 4px 16px rgba(0,0,0,0.1)"
+          : "none",
+        border: hovered ? "1px solid rgba(255,255,255,0.6)" : "1px solid transparent",
       }}
     >
-      {/* Distortion blur layer */}
-      <span style={{
-        position: "absolute", inset: 0, borderRadius: "999px",
-        backdropFilter: "blur(3px)",
-        filter: hovered ? "url(#glass-distortion)" : "none",
-        isolation: "isolate",
-        opacity: hovered ? 1 : 0,
-        transition: "opacity 0.3s ease",
-        zIndex: 0,
-      }} />
-      {/* White tint layer */}
-      <span style={{
-        position: "absolute", inset: 0, borderRadius: "999px",
-        background: "rgba(255,255,255,0.3)",
-        opacity: hovered ? 1 : 0,
-        transition: "opacity 0.3s ease",
-        zIndex: 1,
-      }} />
-      {/* Glass rim (inset shadow) */}
-      <span style={{
-        position: "absolute", inset: 0, borderRadius: "999px",
-        boxShadow: "inset 2px 2px 1px rgba(255,255,255,0.6), inset -1px -1px 1px rgba(255,255,255,0.4)",
-        opacity: hovered ? 1 : 0,
-        transition: "opacity 0.3s ease",
-        zIndex: 2,
-      }} />
-      {/* Text */}
-      <span style={{ position: "relative", zIndex: 3 }}>{label}</span>
+      {label}
     </a>
   );
 }
@@ -115,8 +76,6 @@ export default function FloatingUI() {
 
   return (
     <>
-      <GlassFilter />
-
       <AnimatePresence>
         {showNav && (
           <div style={{
@@ -131,14 +90,14 @@ export default function FloatingUI() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               style={{
                 pointerEvents: "auto",
-                background: "rgba(255,255,255,0.55)",
-                backdropFilter: "blur(28px) saturate(200%)",
-                WebkitBackdropFilter: "blur(28px) saturate(200%)",
-                border: "1px solid rgba(255,255,255,0.75)",
+                background: "rgba(255,255,255,0.5)",
+                backdropFilter: "blur(32px) saturate(200%)",
+                WebkitBackdropFilter: "blur(32px) saturate(200%)",
+                border: "1px solid rgba(255,255,255,0.8)",
                 borderRadius: "999px",
                 padding: "6px 8px",
                 display: "flex", alignItems: "center", gap: "2px",
-                boxShadow: "0 2px 20px rgba(0,0,0,0.07), inset 0 1px 1px rgba(255,255,255,0.9)",
+                boxShadow: "0 2px 24px rgba(0,0,0,0.06), inset 0 1px 1px rgba(255,255,255,0.95)",
               }}
             >
               {navLinks.map(([href, label]) => (
