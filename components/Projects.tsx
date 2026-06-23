@@ -165,7 +165,9 @@ export default function Projects() {
                   background: thumb?.type === "image" ? `url(${thumb.url}) center/cover` : `linear-gradient(135deg, ${p.color} 0%, #222 100%)`,
                   position: "relative", display: "flex", alignItems: "center", justifyContent: "center",
                   overflow: "hidden",
-                }}>
+                }}
+                  className="project-card-img"
+                >
                   {thumb?.type === "video" && (
                     <video
                       src={thumb.url}
@@ -199,11 +201,22 @@ export default function Projects() {
                       GERÇEK PROJE
                     </div>
                   )}
-                  <div style={{
-                    position: "absolute", bottom: "12px", right: "12px",
-                    width: "30px", height: "30px", borderRadius: "50%",
-                    background: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "13px",
-                  }}>↗</div>
+                  {/* Hover overlay */}
+                  <div className="project-card-overlay" style={{
+                    position: "absolute", inset: 0,
+                    background: "rgba(0,0,0,0.55)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    opacity: 0, transition: "opacity 0.25s ease",
+                  }}>
+                    <div style={{
+                      display: "flex", alignItems: "center", gap: "8px",
+                      padding: "11px 24px", borderRadius: "999px",
+                      background: "#fff", color: "#111",
+                      fontSize: "13px", fontWeight: 700,
+                    }}>
+                      İncele ↗
+                    </div>
+                  </div>
                 </div>
 
                 {/* Bilgi */}
