@@ -46,6 +46,12 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 }
 .section-label::before { content: '/'; color: #bbb; margin-right: 3px; }
 
+@keyframes aurora {
+  from { background-position: 50% 50%, 50% 50%; }
+  to { background-position: 350% 50%, 350% 50%; }
+}
+.animate-aurora { animation: aurora 12s linear infinite; }
+
 .hakkimda-orbital-mobile { display: none; }
 
 @media (max-width: 767px) {

@@ -234,11 +234,25 @@ export default function Hero() {
         position: "relative",
       }}
     >
+      {/* Aurora arka plan */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0 }}>
+        <div style={{
+          position: "absolute", inset: "-10px",
+          backgroundImage: "repeating-linear-gradient(100deg,#fff 0%,#fff 7%,transparent 10%,transparent 12%,#fff 16%), repeating-linear-gradient(100deg,#93c5fd 10%,#a5b4fc 15%,#bfdbfe 20%,#ddd6fe 25%,#60a5fa 30%)",
+          backgroundSize: "300%, 200%",
+          backgroundPosition: "50% 50%, 50% 50%",
+          filter: "blur(10px)",
+          opacity: 0.5,
+          maskImage: "radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%)",
+          WebkitMaskImage: "radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%)",
+        }} className="animate-aurora" />
+      </div>
+
       {/* NAV */}
       <nav style={{
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "18px 28px", flexShrink: 0,
-        position: "relative", zIndex: 30, background: "#fff",
+        position: "relative", zIndex: 30, background: "transparent",
         flexWrap: "wrap", gap: "10px",
       }}>
         <div style={{
