@@ -163,22 +163,33 @@ export default function Hero() {
         {/* ANA İÇERİK */}
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "16px 20px 32px" }}>
 
-          {/* Üst: isim sol + fotoğraf sağ */}
-          <div style={{ display: "flex", alignItems: "flex-end", gap: "12px" }}>
-            {/* İsim */}
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <p style={{ fontSize: "11px", letterSpacing: "0.12em", color: "#aaa", fontWeight: 600, marginBottom: "12px" }}>
-                / PORTFOLIO
-              </p>
-              <FitText><span style={{ color: "#111" }}>İSMAİL</span></FitText>
-              <div style={{ marginTop: "4px" }}>
-                <FitText><span style={{ color: "transparent", WebkitTextStroke: "2px #111" }}>GEÇGİLİ</span></FitText>
+          {/* Üst: isim sol + fotoğraf sağ — aynı hizada başlar */}
+          <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+            {/* İsim + istatistikler sol */}
+            <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: "20px" }}>
+              <div>
+                <p style={{ fontSize: "11px", letterSpacing: "0.12em", color: "#aaa", fontWeight: 600, marginBottom: "12px" }}>
+                  / PORTFOLIO
+                </p>
+                <FitText><span style={{ color: "#111" }}>İSMAİL</span></FitText>
+                <div style={{ marginTop: "4px" }}>
+                  <FitText><span style={{ color: "transparent", WebkitTextStroke: "2px #111" }}>GEÇGİLİ</span></FitText>
+                </div>
+              </div>
+              {/* İstatistikler — ismin hemen altında */}
+              <div style={{ display: "flex", gap: "20px" }}>
+                {[["10+", "Yıl"], ["50+", "Proje"], ["5", "Şirket"]].map(([val, lbl]) => (
+                  <div key={lbl}>
+                    <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "22px", color: "#111", letterSpacing: "-0.04em", marginBottom: "2px" }}>{val}</p>
+                    <p style={{ fontSize: "10px", color: "#aaa", fontWeight: 500 }}>{lbl}</p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Fotoğraf */}
+            {/* Fotoğraf sağ */}
             <div style={{
-              width: "38%", flexShrink: 0,
+              width: "42%", flexShrink: 0,
               borderRadius: "16px", overflow: "hidden",
               aspectRatio: "3/4", background: "#f0f0f0",
             }}>
@@ -189,16 +200,6 @@ export default function Hero() {
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", filter: "grayscale(1)" }}
               />
             </div>
-          </div>
-
-          {/* Orta: istatistikler */}
-          <div style={{ display: "flex", gap: "24px", padding: "0 2px" }}>
-            {[["10+", "Yıl Deneyim"], ["50+", "Proje"], ["5", "Şirket"]].map(([val, lbl]) => (
-              <div key={lbl}>
-                <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "24px", color: "#111", letterSpacing: "-0.04em", marginBottom: "2px" }}>{val}</p>
-                <p style={{ fontSize: "11px", color: "#aaa", fontWeight: 500 }}>{lbl}</p>
-              </div>
-            ))}
           </div>
 
           {/* Alt bilgi */}
