@@ -15,7 +15,7 @@ function GlassFilter() {
   return (
     <svg style={{ position: "absolute", width: 0, height: 0 }}>
       <defs>
-        <filter id="lg-filter" x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
+        <filter id="lg-filter" x="-20%" y="-50%" width="140%" height="200%" colorInterpolationFilters="sRGB">
           <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence" />
           <feComponentTransfer in="turbulence" result="mapped">
             <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
@@ -27,7 +27,7 @@ function GlassFilter() {
             <fePointLight x="-200" y="-200" z="300" />
           </feSpecularLighting>
           <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
-          <feDisplacementMap in="SourceGraphic" in2="softMap" scale="60" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+          <feDisplacementMap in="SourceGraphic" in2="softMap" scale="40" xChannelSelector="R" yChannelSelector="G" />
         </filter>
       </defs>
     </svg>
@@ -36,59 +36,22 @@ function GlassFilter() {
 
 function LiquidGlassLink({ href, label }: { href: string; label: string }) {
   const [hovered, setHovered] = useState(false);
-
   return (
     <a
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        position: "relative",
-        display: "inline-block",
-        fontSize: "12px",
-        fontWeight: 500,
-        color: "#111",
-        textDecoration: "none",
-        padding: "6px 14px",
-        borderRadius: "999px",
-        whiteSpace: "nowrap",
-        transition: "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 2.2)",
+        fontSize: "12px", fontWeight: 500, color: "#fff",
+        textDecoration: "none", padding: "6px 14px",
+        borderRadius: "999px", whiteSpace: "nowrap",
+        transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2)",
         transform: hovered ? "scale(1.08)" : "scale(1)",
-        isolation: "isolate",
-        overflow: "hidden",
+        background: hovered ? "rgba(255,255,255,0.2)" : "transparent",
+        boxShadow: hovered ? "inset 2px 2px 1px rgba(255,255,255,0.5), inset -1px -1px 1px rgba(255,255,255,0.3)" : "none",
       }}
     >
-      {/* Glass backdrop layer */}
-      <span style={{
-        position: "absolute", inset: 0,
-        borderRadius: "999px",
-        backdropFilter: "blur(4px)",
-        WebkitBackdropFilter: "blur(4px)",
-        filter: hovered ? "url(#lg-filter)" : "none",
-        opacity: hovered ? 1 : 0,
-        transition: "opacity 0.3s ease",
-        zIndex: 0,
-      }} />
-      {/* White tint */}
-      <span style={{
-        position: "absolute", inset: 0,
-        borderRadius: "999px",
-        background: hovered ? "rgba(255,255,255,0.28)" : "transparent",
-        transition: "background 0.3s ease",
-        zIndex: 1,
-      }} />
-      {/* Specular rim */}
-      <span style={{
-        position: "absolute", inset: 0,
-        borderRadius: "999px",
-        boxShadow: hovered
-          ? "inset 2px 2px 1px rgba(255,255,255,0.75), inset -1px -1px 1px rgba(255,255,255,0.45), 0 4px 12px rgba(0,0,0,0.12)"
-          : "none",
-        border: hovered ? "1px solid rgba(255,255,255,0.6)" : "1px solid transparent",
-        transition: "all 0.3s ease",
-        zIndex: 2,
-      }} />
-      <span style={{ position: "relative", zIndex: 3 }}>{label}</span>
+      {label}
     </a>
   );
 }
@@ -135,30 +98,36 @@ export default function FloatingUI() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -80, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              style={{
-                pointerEvents: "auto",
-                position: "relative",
-                borderRadius: "999px",
-                padding: "6px 8px",
-                display: "flex", alignItems: "center", gap: "2px",
-              }}
+              style={{ pointerEvents: "auto", position: "relative" }}
             >
-              {/* Nav pill glass background */}
-              <span style={{
+              {/* Gerçek cam katmanı — filter burada, dışarıda */}
+              <div style={{
                 position: "absolute", inset: 0,
                 borderRadius: "999px",
-                backdropFilter: "blur(28px) saturate(180%)",
-                WebkitBackdropFilter: "blur(28px) saturate(180%)",
-                background: "rgba(255,255,255,0.45)",
-                border: "1px solid rgba(255,255,255,0.75)",
-                boxShadow: "0 2px 20px rgba(0,0,0,0.06), inset 0 1px 1px rgba(255,255,255,0.9)",
+                backdropFilter: "blur(3px)",
+                WebkitBackdropFilter: "blur(3px)",
+                filter: "url(#lg-filter)",
                 zIndex: 0,
               }} />
-              <span style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", gap: "2px" }}>
+              {/* Beyaz tint + border */}
+              <div style={{
+                position: "absolute", inset: 0,
+                borderRadius: "999px",
+                background: "rgba(255,255,255,0.18)",
+                border: "1px solid rgba(255,255,255,0.45)",
+                boxShadow: "inset 2px 2px 1px rgba(255,255,255,0.5), inset -1px -1px 1px rgba(255,255,255,0.3), 0 4px 24px rgba(0,0,0,0.15)",
+                zIndex: 1,
+              }} />
+              {/* Linkler */}
+              <div style={{
+                position: "relative", zIndex: 2,
+                padding: "6px 8px",
+                display: "flex", alignItems: "center", gap: "2px",
+              }}>
                 {navLinks.map(([href, label]) => (
                   <LiquidGlassLink key={href} href={href} label={label} />
                 ))}
-              </span>
+              </div>
             </motion.div>
           </div>
         )}
