@@ -161,11 +161,11 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* ANA İÇERİK */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "32px 20px 36px" }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "24px 20px 36px" }}>
 
-          {/* İsim — sola hizalı alt alta, FitText ile ekrana sığdır */}
+          {/* Üst: etiket + isim */}
           <div>
-            <p style={{ fontSize: "12px", letterSpacing: "0.12em", color: "#aaa", fontWeight: 600, marginBottom: "20px" }}>
+            <p style={{ fontSize: "11px", letterSpacing: "0.12em", color: "#aaa", fontWeight: 600, marginBottom: "16px" }}>
               / PORTFOLIO
             </p>
             <FitText><span style={{ color: "#111" }}>İSMAİL</span></FitText>
@@ -174,25 +174,30 @@ export default function Hero() {
             </div>
           </div>
 
+          {/* Orta: istatistikler */}
+          <div style={{ display: "flex", gap: "32px", padding: "0 4px" }}>
+            {[["10+", "Yıl Deneyim"], ["50+", "Proje"], ["5", "Şirket"]].map(([val, lbl]) => (
+              <div key={lbl}>
+                <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "28px", color: "#111", letterSpacing: "-0.04em", marginBottom: "2px" }}>{val}</p>
+                <p style={{ fontSize: "11px", color: "#aaa", fontWeight: 500 }}>{lbl}</p>
+              </div>
+            ))}
+          </div>
+
           {/* Alt bilgi */}
           <div>
-            <p style={{
-              fontFamily: "'Syne', sans-serif", fontWeight: 700,
-              fontSize: "16px", color: "#111", marginBottom: "6px",
-            }}>
+            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "15px", color: "#111", marginBottom: "6px" }}>
               Tasarımcı & AI Üreticisi
             </p>
-            <p style={{ fontSize: "13px", color: "#888", lineHeight: 1.7, marginBottom: "24px" }}>
-              Grafik tasarım ve yapay zeka araçlarını<br />birleştirerek ticari değer yaratan işler üretiyorum.
+            <p style={{ fontSize: "13px", color: "#888", lineHeight: 1.7, marginBottom: "20px" }}>
+              Grafik tasarım ve yapay zeka araçlarını birleştirerek ticari değer yaratan işler üretiyorum.
             </p>
-
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <a href="#contact" style={{
                 display: "inline-flex", alignItems: "center", gap: "6px",
                 padding: "12px 22px", borderRadius: "999px",
                 background: "#111", color: "#fff", textDecoration: "none", fontSize: "13px", fontWeight: 600,
               }}>Birlikte Çalışalım ↗</a>
-
               <div style={{ display: "flex", gap: "8px" }}>
                 {socials.map(({ label, icon, href }) => (
                   <a key={label} href={href} title={label} style={{
