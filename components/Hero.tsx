@@ -99,7 +99,7 @@ export default function Hero() {
             fontSize: "11px", fontWeight: 500, color: "#555",
           }}>
             <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
-            Available for New Project
+            Yeni Projeye Açığım
           </div>
 
           <button
@@ -197,7 +197,7 @@ export default function Hero() {
             <a href="#contact" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "13px 24px", borderRadius: "999px",
-              background: "#111", color: "#fff", textDecoration: "none", fontSize: "13px", fontWeight: 700,
+              background: "#fff", color: "#111", textDecoration: "none", fontSize: "13px", fontWeight: 700,
             }}>Birlikte Çalışalım ↗</a>
             <a href="https://wa.me/905535017666" target="_blank" rel="noreferrer" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
