@@ -181,20 +181,37 @@ export default function Hakkimda() {
         </motion.div>
       </div>
 
-      {/* Mobil — orbital beceriler tam genişlik */}
+    </section>
+  );
+}
+
+export function SkillsSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <section
+      ref={ref}
+      className="hakkimda-orbital-mobile"
+      style={{
+        background: "#fff",
+        borderRadius: "20px",
+        margin: "8px 12px",
+        padding: "32px 20px",
+        overflow: "visible",
+      }}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="hakkimda-orbital-mobile"
+        transition={{ duration: 0.7 }}
       >
-        <div style={{
+        <p style={{
           fontSize: "11px", letterSpacing: "0.12em",
-          color: "#aaa", fontWeight: 600,
-          paddingLeft: "2px", marginBottom: "12px",
+          color: "#aaa", fontWeight: 600, marginBottom: "8px",
         }}>
           BECERİLER & AI ARAÇLARI — <span style={{ color: "#bbb", fontWeight: 400 }}>Üzerine tıkla</span>
-        </div>
+        </p>
         <RadialOrbitalTimeline timelineData={skillsData} />
       </motion.div>
     </section>

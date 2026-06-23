@@ -233,7 +233,7 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                       top: 70,
                       left: "50%",
                       transform: "translateX(-50%)",
-                      width: "220px",
+                      width: isMobile ? "170px" : "220px",
                       zIndex: 999,
                       background: "#0f0f0f",
                       borderRadius: "14px",

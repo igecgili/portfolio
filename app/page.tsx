@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import Hakkimda from "@/components/Hakkimda";
+import Hakkimda, { SkillsSection } from "@/components/Hakkimda";
 import Projects from "@/components/Projects";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
@@ -10,6 +10,7 @@ export default function Home() {
     <main style={{ minHeight: "100vh", background: "#f0f0f0" }}>
       <Hero />
       <Hakkimda />
+      <SkillsSection />
       <Projects />
       <About />
       <Experience />
