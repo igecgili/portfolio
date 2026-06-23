@@ -170,13 +170,9 @@ export default function Hakkimda() {
           style={{ borderRadius: "16px" }}
           className="hakkimda-orbital-desktop"
         >
-          <div style={{
-            fontSize: "11px", letterSpacing: "0.12em",
-            color: "#aaa", fontWeight: 600,
-            paddingLeft: "2px", marginBottom: "12px",
-          }}>
+          <p style={{ fontSize: "11px", letterSpacing: "0.12em", color: "#aaa", fontWeight: 600, marginBottom: "12px" }}>
             BECERİLER & AI ARAÇLARI — <span style={{ color: "#bbb", fontWeight: 400 }}>Üzerine tıkla</span>
-          </div>
+          </p>
           <RadialOrbitalTimeline timelineData={skillsData} />
         </motion.div>
       </div>
@@ -206,12 +202,8 @@ export function SkillsSection() {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7 }}
       >
-        <p style={{
-          fontSize: "11px", letterSpacing: "0.12em",
-          color: "#aaa", fontWeight: 600, marginBottom: "8px",
-        }}>
-          BECERİLER & AI ARAÇLARI — <span style={{ color: "#bbb", fontWeight: 400 }}>Üzerine tıkla</span>
-        </p>
+        <h2 className="section-label" style={{ marginBottom: "8px" }}>BECERİLER & ARAÇLAR</h2>
+        <p style={{ fontSize: "12px", color: "#aaa", marginBottom: "16px" }}>Üzerine tıkla</p>
         <RadialOrbitalTimeline timelineData={skillsData} />
       </motion.div>
     </section>

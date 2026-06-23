@@ -286,8 +286,8 @@ export default function RadialOrbitalTimeline({ timelineData }: RadialOrbitalTim
                       </div>
                     </div>
 
-                    {/* İlgili araçlar */}
-                    {item.relatedIds.length > 0 && (
+                    {/* İlgili araçlar — sadece desktop */}
+                    {item.relatedIds.length > 0 && !isMobile && (
                       <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "14px" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }}>
                           <Link size={11} color="rgba(255,255,255,0.35)" />
