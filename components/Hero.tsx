@@ -95,8 +95,8 @@ export default function Hero() {
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "7px",
             padding: "6px 14px", borderRadius: "999px",
-            background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255,255,255,0.3)", fontSize: "11px", fontWeight: 500, color: "#fff",
+            background: "#fff", border: "1px solid #e0e0e0",
+            fontSize: "11px", fontWeight: 500, color: "#555",
           }}>
             <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
             Available for New Project
@@ -105,15 +105,14 @@ export default function Hero() {
           <button
             onClick={() => setMenuOpen(o => !o)}
             style={{
-              background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)",
-              border: "1px solid rgba(255,255,255,0.3)",
+              background: "#fff", border: "1px solid #e0e0e0",
               borderRadius: "10px", cursor: "pointer", padding: "9px 11px",
               display: "flex", flexDirection: "column", gap: "5px",
             }}
           >
-            <span style={{ width: 20, height: 2, background: "#fff", display: "block", borderRadius: 2, transition: "all .2s", transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none" }} />
-            <span style={{ width: 20, height: 2, background: "#fff", display: "block", borderRadius: 2, transition: "all .2s", opacity: menuOpen ? 0 : 1 }} />
-            <span style={{ width: 20, height: 2, background: "#fff", display: "block", borderRadius: 2, transition: "all .2s", transform: menuOpen ? "rotate(-45deg) translateY(-7px)" : "none" }} />
+            <span style={{ width: 20, height: 2, background: "#111", display: "block", borderRadius: 2, transition: "all .2s", transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none" }} />
+            <span style={{ width: 20, height: 2, background: "#111", display: "block", borderRadius: 2, transition: "all .2s", opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ width: 20, height: 2, background: "#111", display: "block", borderRadius: 2, transition: "all .2s", transform: menuOpen ? "rotate(-45deg) translateY(-7px)" : "none" }} />
           </button>
         </nav>
 
