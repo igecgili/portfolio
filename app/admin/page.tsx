@@ -74,9 +74,11 @@ function MediaUploader({ media, onChange }: { media: MediaItem[]; onChange: (m: 
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState("");
+  const [error, setError] = useState("");
 
   const handleFiles = async (files: FileList) => {
     setUploading(true);
+    setError("");
     const results: MediaItem[] = [];
 
     for (let i = 0; i < files.length; i++) {
@@ -86,7 +88,6 @@ function MediaUploader({ media, onChange }: { media: MediaItem[]; onChange: (m: 
       const fd = new FormData();
       fd.append("file", file);
       fd.append("upload_preset", "portfolio_upload");
-      fd.append("cloud_name", "dqilpsjcc");
 
       const isVideo = file.type.startsWith("video/");
       const endpoint = isVideo
@@ -98,13 +99,15 @@ function MediaUploader({ media, onChange }: { media: MediaItem[]; onChange: (m: 
         const data = await res.json();
         if (data.secure_url) {
           results.push({ type: isVideo ? "video" : "image", url: data.secure_url, name: file.name });
+        } else {
+          setError(`Hata: ${data.error?.message || "Yükleme başarısız"}`);
         }
-      } catch {
-        console.error("Yükleme hatası:", file.name);
+      } catch (e) {
+        setError(`Bağlantı hatası: ${String(e)}`);
       }
     }
 
-    onChange([...media, ...results]);
+    if (results.length > 0) onChange([...media, ...results]);
     setUploading(false);
     setProgress("");
   };
@@ -146,6 +149,10 @@ function MediaUploader({ media, onChange }: { media: MediaItem[]; onChange: (m: 
           onChange={e => { if (e.target.files?.length) handleFiles(e.target.files); }}
         />
       </div>
+
+      {error && (
+        <p style={{ fontSize: "13px", color: "#e00", marginBottom: "10px", padding: "10px 14px", background: "#fff0f0", borderRadius: "8px" }}>{error}</p>
+      )}
 
       {/* Yüklenen dosyalar */}
       {media.length > 0 && (
