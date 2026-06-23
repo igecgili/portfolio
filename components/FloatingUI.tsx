@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  ["#hero", "Ana Sayfa"],
   ["#hakkimda", "Hakkımda"],
   ["#projects", "Çalışmalar"],
   ["#services", "Hizmetler"],
@@ -39,15 +38,16 @@ export default function FloatingUI() {
             exit={{ y: -80, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             style={{
-              position: "fixed", top: 16, left: "50%", transform: "translateX(-50%)",
+              position: "fixed", top: 22, left: "50%", transform: "translateX(-50%)",
               zIndex: 999,
-              background: "rgba(255,255,255,0.85)",
-              backdropFilter: "blur(16px)",
-              border: "1px solid rgba(0,0,0,0.08)",
+              background: "rgba(255,255,255,0.72)",
+              backdropFilter: "blur(24px) saturate(180%)",
+              WebkitBackdropFilter: "blur(24px) saturate(180%)",
+              border: "1px solid rgba(0,0,0,0.12)",
               borderRadius: "999px",
-              padding: "10px 20px",
-              display: "flex", alignItems: "center", gap: "4px",
-              boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+              padding: "8px 18px",
+              display: "flex", alignItems: "center", gap: "2px",
+              boxShadow: "0 2px 16px rgba(0,0,0,0.1)",
             }}
           >
             {navLinks.map(([href, label]) => (
