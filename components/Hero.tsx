@@ -249,7 +249,7 @@ export default function Hero() {
       </div>
 
       {/* NAV */}
-      <nav style={{
+      <nav id="hero-nav" style={{
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "18px 28px", flexShrink: 0,
         position: "relative", zIndex: 30, background: "transparent",

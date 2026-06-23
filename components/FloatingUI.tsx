@@ -15,12 +15,23 @@ export default function FloatingUI() {
   const [showNav, setShowNav] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [lastY, setLastY] = useState(0);
+  const [navTop, setNavTop] = useState(18);
+
+  useEffect(() => {
+    // Hero nav'ın dikey konumunu ölç
+    const heroNav = document.getElementById("hero-nav");
+    if (heroNav) {
+      const rect = heroNav.getBoundingClientRect();
+      const centerY = rect.top + rect.height / 2;
+      setNavTop(Math.round(centerY - 18)); // pill yüksekliği ~36px, yarısı 18
+    }
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
       setShowTop(y > 400);
-      setShowNav(y > 300 && y < lastY); // yukarı kaydırınca göster
+      setShowNav(y > 300 && y < lastY);
       setLastY(y);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -38,7 +49,7 @@ export default function FloatingUI() {
             exit={{ y: -80, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             style={{
-              position: "fixed", top: 22, left: "50%", transform: "translateX(-50%)",
+              position: "fixed", top: navTop, left: "50%", transform: "translateX(-50%)",
               zIndex: 999,
               background: "rgba(255,255,255,0.72)",
               backdropFilter: "blur(24px) saturate(180%)",
