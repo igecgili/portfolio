@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -11,59 +11,78 @@ const navLinks = [
   ["#contact", "İletişim"],
 ];
 
-function LiquidGlassButton({ href, label }: { href: string; label: string }) {
-  const [hovered, setHovered] = useState(false);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const ref = useRef<HTMLAnchorElement>(null);
+function GlassFilter() {
+  return (
+    <svg style={{ display: "none" }}>
+      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+        <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence" />
+        <feComponentTransfer in="turbulence" result="mapped">
+          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+        </feComponentTransfer>
+        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+        <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lightingColor="white" result="specLight">
+          <fePointLight x="-200" y="-200" z="300" />
+        </feSpecularLighting>
+        <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="200" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
+  );
+}
 
-  const onMouseMove = (e: React.MouseEvent) => {
-    const r = ref.current?.getBoundingClientRect();
-    if (!r) return;
-    setPos({ x: e.clientX - r.left, y: e.clientY - r.top });
-  };
+function LiquidGlassLink({ href, label }: { href: string; label: string }) {
+  const [hovered, setHovered] = useState(false);
 
   return (
     <a
-      ref={ref}
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onMouseMove={onMouseMove}
       style={{
         position: "relative",
-        fontSize: "12px", fontWeight: 500,
-        color: hovered ? "#000" : "#444",
+        display: "inline-block",
+        fontSize: "12px",
+        fontWeight: 500,
+        color: "#111",
         textDecoration: "none",
         padding: "6px 14px",
         borderRadius: "999px",
         whiteSpace: "nowrap",
-        transition: "color 0.2s",
-        isolation: "isolate",
+        transition: "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 2.2)",
+        boxShadow: hovered ? "0 6px 12px rgba(0,0,0,0.15), 0 0 20px rgba(0,0,0,0.08)" : "none",
         overflow: "hidden",
-        display: "inline-block",
       }}
     >
-      {/* Liquid glass hover layer */}
-      <span
-        style={{
-          position: "absolute", inset: 0,
-          borderRadius: "999px",
-          opacity: hovered ? 1 : 0,
-          transition: "opacity 0.25s ease",
-          background: "rgba(255,255,255,0.55)",
-          backdropFilter: "blur(12px) saturate(200%)",
-          WebkitBackdropFilter: "blur(12px) saturate(200%)",
-          border: "1px solid rgba(255,255,255,0.8)",
-          boxShadow: "inset 0 1px 1px rgba(255,255,255,0.9), 0 4px 16px rgba(0,0,0,0.08)",
-          // Liquid distortion: radial highlight follows mouse
-          backgroundImage: hovered
-            ? `radial-gradient(circle 40px at ${pos.x}px ${pos.y}px, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 60%, transparent 100%)`
-            : "none",
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
-      <span style={{ position: "relative", zIndex: 1 }}>{label}</span>
+      {/* Distortion blur layer */}
+      <span style={{
+        position: "absolute", inset: 0, borderRadius: "999px",
+        backdropFilter: "blur(3px)",
+        filter: hovered ? "url(#glass-distortion)" : "none",
+        isolation: "isolate",
+        opacity: hovered ? 1 : 0,
+        transition: "opacity 0.3s ease",
+        zIndex: 0,
+      }} />
+      {/* White tint layer */}
+      <span style={{
+        position: "absolute", inset: 0, borderRadius: "999px",
+        background: "rgba(255,255,255,0.3)",
+        opacity: hovered ? 1 : 0,
+        transition: "opacity 0.3s ease",
+        zIndex: 1,
+      }} />
+      {/* Glass rim (inset shadow) */}
+      <span style={{
+        position: "absolute", inset: 0, borderRadius: "999px",
+        boxShadow: "inset 2px 2px 1px rgba(255,255,255,0.6), inset -1px -1px 1px rgba(255,255,255,0.4)",
+        opacity: hovered ? 1 : 0,
+        transition: "opacity 0.3s ease",
+        zIndex: 2,
+      }} />
+      {/* Text */}
+      <span style={{ position: "relative", zIndex: 3 }}>{label}</span>
     </a>
   );
 }
@@ -96,20 +115,15 @@ export default function FloatingUI() {
 
   return (
     <>
-      {/* SVG filter for extra liquid distortion */}
-      <svg width="0" height="0" style={{ position: "absolute" }}>
-        <defs>
-          <filter id="liquid-filter">
-            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-        </defs>
-      </svg>
+      <GlassFilter />
 
-      {/* Floating sticky nav */}
       <AnimatePresence>
         {showNav && (
-          <div style={{ position: "fixed", top: navTop, left: 0, right: 0, display: "flex", justifyContent: "center", zIndex: 999, pointerEvents: "none" }}>
+          <div style={{
+            position: "fixed", top: navTop, left: 0, right: 0,
+            display: "flex", justifyContent: "center",
+            zIndex: 999, pointerEvents: "none",
+          }}>
             <motion.div
               initial={{ y: -80, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -117,25 +131,24 @@ export default function FloatingUI() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               style={{
                 pointerEvents: "auto",
-                background: "rgba(255,255,255,0.6)",
+                background: "rgba(255,255,255,0.55)",
                 backdropFilter: "blur(28px) saturate(200%)",
                 WebkitBackdropFilter: "blur(28px) saturate(200%)",
-                border: "1px solid rgba(255,255,255,0.7)",
+                border: "1px solid rgba(255,255,255,0.75)",
                 borderRadius: "999px",
                 padding: "6px 8px",
                 display: "flex", alignItems: "center", gap: "2px",
-                boxShadow: "0 2px 20px rgba(0,0,0,0.08), inset 0 1px 1px rgba(255,255,255,0.8)",
+                boxShadow: "0 2px 20px rgba(0,0,0,0.07), inset 0 1px 1px rgba(255,255,255,0.9)",
               }}
             >
               {navLinks.map(([href, label]) => (
-                <LiquidGlassButton key={href} href={href} label={label} />
+                <LiquidGlassLink key={href} href={href} label={label} />
               ))}
             </motion.div>
           </div>
         )}
       </AnimatePresence>
 
-      {/* Scroll to top */}
       <AnimatePresence>
         {showTop && (
           <motion.button
