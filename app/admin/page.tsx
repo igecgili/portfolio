@@ -264,7 +264,7 @@ function AdminPanel() {
                 <label style={lbl}>Tür</label>
                 <select style={inp} value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value as ProjectType }))}>
                   <option>Gerçek Proje</option>
-                  <option>Keşif</option>
+                  <option>Konsept</option>
                 </select>
               </div>
             </div>

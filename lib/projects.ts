@@ -1,4 +1,4 @@
-export type ProjectType = "Gerçek Proje" | "Keşif";
+export type ProjectType = "Gerçek Proje" | "Konsept";
 
 export interface MediaItem {
   type: "image" | "video";

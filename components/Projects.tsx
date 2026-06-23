@@ -5,7 +5,7 @@ import { useRef, useState, useEffect } from "react";
 import { Project, defaultProjects, MediaItem } from "@/lib/projects";
 
 const STORAGE_KEY = "ig_projects";
-const filters = ["Tümü", "Gerçek Proje", "Keşif"];
+const filters = ["Tümü", "Gerçek Proje", "Konsept"];
 
 function MediaModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const [idx, setIdx] = useState(0);
