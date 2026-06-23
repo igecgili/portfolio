@@ -194,13 +194,14 @@ function AdminPanel() {
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    setProjects(stored ? JSON.parse(stored) : defaultProjects);
+    fetch("/api/projects").then(r => r.json()).then(setProjects).catch(() => setProjects(defaultProjects));
   }, []);
 
-  const persist = (list: Project[]) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+  const persist = async (list: Project[]) => {
     setProjects(list);
+    try {
+      await fetch("/api/projects", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(list) });
+    } catch { /* ignore */ }
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };

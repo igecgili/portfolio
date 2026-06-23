@@ -163,28 +163,15 @@ export default function Hero() {
         {/* ANA İÇERİK */}
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "32px 20px 36px" }}>
 
-          {/* İsim — sola hizalı alt alta */}
+          {/* İsim — sola hizalı alt alta, FitText ile ekrana sığdır */}
           <div>
             <p style={{ fontSize: "12px", letterSpacing: "0.12em", color: "#aaa", fontWeight: 600, marginBottom: "20px" }}>
               / PORTFOLIO
             </p>
-            <h1 style={{
-              fontFamily: "'Syne', sans-serif", fontWeight: 800,
-              fontSize: "clamp(52px, 18vw, 88px)",
-              letterSpacing: "-0.04em", lineHeight: 0.9,
-              color: "#111", margin: 0,
-            }}>
-              İSMAİL
-            </h1>
-            <h1 style={{
-              fontFamily: "'Syne', sans-serif", fontWeight: 800,
-              fontSize: "clamp(52px, 18vw, 88px)",
-              letterSpacing: "-0.04em", lineHeight: 0.9,
-              color: "transparent", WebkitTextStroke: "2px #111",
-              margin: "4px 0 0 0",
-            }}>
-              GEÇGİLİ
-            </h1>
+            <FitText><span style={{ color: "#111" }}>İSMAİL</span></FitText>
+            <div style={{ marginTop: "4px" }}>
+              <FitText><span style={{ color: "transparent", WebkitTextStroke: "2px #111" }}>GEÇGİLİ</span></FitText>
+            </div>
           </div>
 
           {/* Alt bilgi */}

@@ -93,8 +93,7 @@ export default function Projects() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) setProjects(JSON.parse(stored));
+    fetch("/api/projects").then(r => r.json()).then(setProjects).catch(() => {});
   }, []);
 
   const filtered = active === "Tümü" ? projects : projects.filter(p => p.type === active);
