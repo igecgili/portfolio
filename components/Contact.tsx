@@ -93,14 +93,6 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.45 }}
           style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "8px", flexWrap: "wrap", marginBottom: "44px" }}
         >
-          <span style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            padding: "8px 18px", borderRadius: "999px",
-            background: "#111", color: "#fff", fontSize: "13px", fontWeight: 600,
-          }}>
-            İsmail Geçgili
-          </span>
-
           {socials.map(s => (
             <a key={s.label} href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" style={{
               display: "inline-flex", alignItems: "center",
@@ -117,10 +109,6 @@ export default function Contact() {
           ))}
         </motion.div>
 
-        {/* Footer */}
-        <div style={{ borderTop: "1px solid #ebebeb", paddingTop: "24px" }}>
-          <p style={{ fontSize: "12px", color: "#bbb" }}>© 2025 İsmail Geçgili — Tüm hakları saklıdır.</p>
-        </div>
       </div>
     </section>
   );
