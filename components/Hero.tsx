@@ -255,14 +255,7 @@ export default function Hero() {
         position: "relative", zIndex: 30, background: "transparent",
         flexWrap: "wrap", gap: "10px",
       }}>
-        <div style={{
-          display: "inline-flex", alignItems: "center", gap: "7px",
-          padding: "7px 16px", borderRadius: "999px",
-          border: "1px solid #e0e0e0", fontSize: "12px", fontWeight: 500, color: "#555",
-        }}>
-          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
-          Yeni Projeye Açığım
-        </div>
+        <div />
         <div style={{
           display: "flex", alignItems: "center", gap: "4px",
           background: "rgba(0,0,0,0.04)", borderRadius: "999px",
