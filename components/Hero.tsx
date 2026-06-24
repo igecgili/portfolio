@@ -250,11 +250,11 @@ export default function Hero() {
 
       {/* NAV */}
       <nav id="hero-nav" style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
+        display: "flex", alignItems: "center",
         padding: "18px 28px", flexShrink: 0,
         position: "relative", zIndex: 30, background: "transparent",
-        flexWrap: "wrap", gap: "10px",
       }}>
+        <div style={{ flex: 1 }} />
         <div style={{
           display: "flex", alignItems: "center", gap: "4px",
           background: "rgba(0,0,0,0.04)", borderRadius: "999px",
