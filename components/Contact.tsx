@@ -109,6 +109,9 @@ export default function Contact() {
           ))}
         </motion.div>
 
+        <div style={{ borderTop: "1px solid #ebebeb", paddingTop: "24px" }}>
+          <p style={{ fontSize: "12px", color: "#bbb" }}>İsmail Geçgili — Tüm hakları saklıdır.</p>
+        </div>
       </div>
     </section>
   );
