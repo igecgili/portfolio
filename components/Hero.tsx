@@ -263,9 +263,30 @@ export default function Hero() {
           <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
           Yeni Projeye Açığım
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+        <div style={{
+          display: "flex", alignItems: "center", gap: "4px",
+          background: "rgba(0,0,0,0.04)", borderRadius: "999px",
+          padding: "4px 6px", border: "1px solid rgba(0,0,0,0.07)",
+        }}>
           {navLinks.map(([href,label]) => (
-            <a key={href} href={href} style={{ fontSize: "13px", color: "#666", textDecoration: "none", fontWeight: 500 }}>{label}</a>
+            <a key={href} href={href} style={{
+              fontSize: "12px", color: "#444", textDecoration: "none", fontWeight: 500,
+              padding: "7px 16px", borderRadius: "999px", whiteSpace: "nowrap",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = "#fff";
+              el.style.color = "#111";
+              el.style.boxShadow = "0 1px 4px rgba(0,0,0,0.1)";
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = "transparent";
+              el.style.color = "#444";
+              el.style.boxShadow = "none";
+            }}
+            >{label}</a>
           ))}
         </div>
         <a href="https://wa.me/905535017666" target="_blank" rel="noreferrer" style={{
