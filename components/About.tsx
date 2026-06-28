@@ -41,7 +41,7 @@ export default function About() {
         transition={{ duration: 0.7 }}
         style={{ marginBottom: "36px" }}
       >
-        <h2 className="section-label">HİZMETLER</h2>
+        <h2 className="section-label">UZMANLIKLARIM</h2>
       </motion.div>
 
       {/* Accordion */}
