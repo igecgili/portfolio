@@ -5,15 +5,15 @@ import { useRef, useState, useCallback, useEffect } from "react";
 
 const socials = [
   {
-    label: "Instagram", href: "https://instagram.com",
+    label: "Instagram", href: "https://www.instagram.com/ismailgecgili",
     icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>,
   },
   {
-    label: "LinkedIn", href: "https://linkedin.com",
+    label: "LinkedIn", href: "https://www.linkedin.com/in/ismailgecgili/",
     icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>,
   },
   {
-    label: "Behance", href: "https://behance.net",
+    label: "Behance", href: "https://www.behance.net/ismailgecgili",
     icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 11.4c.6-.3 1-.9 1-1.7C8.5 8 7.3 7 5.7 7H1v10h4.9c1.8 0 3.1-.9 3.1-2.7 0-1.1-.6-1.9-1.5-2zM3 9h2.4c.6 0 1 .3 1 .9s-.4.9-1 .9H3V9zm2.6 6H3v-2.2h2.6c.8 0 1.2.4 1.2 1.1S6.4 15 5.6 15zm8.7-6.6h3.5V7.5h-3.5v.9zm-1 1.7c0-2.2 1.6-3.6 3.7-3.6 2.2 0 3.5 1.5 3.5 3.8v.6H15c.1 1 .8 1.6 1.8 1.6.7 0 1.3-.3 1.6-.9h1.8c-.4 1.6-1.7 2.5-3.4 2.5-2.2 0-3.7-1.4-3.7-4zm1.9-.8h3.4c-.2-.9-.8-1.4-1.7-1.4-.9 0-1.5.5-1.7 1.4z"/></svg>,
   },
 ];
