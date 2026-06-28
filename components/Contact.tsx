@@ -94,7 +94,7 @@ export default function Contact() {
           style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "8px", flexWrap: "wrap", marginBottom: "44px" }}
         >
           {socials.map(s => (
-            <a key={s.label} href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" style={{
+            <a key={s.label} href={s.href} target="_blank" rel="noreferrer" style={{
               display: "inline-flex", alignItems: "center",
               padding: "8px 18px", borderRadius: "999px",
               border: "1px solid #e0e0e0", background: "#fff",

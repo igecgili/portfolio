@@ -376,7 +376,7 @@ export default function Hero() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-end" }}>
             {socials.map(({ label, icon, href }) => (
-              <a key={label} href={href} title={label} style={{
+              <a key={label} href={href} title={label} target="_blank" rel="noreferrer" style={{
                 display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px",
                 padding: "8px 14px", borderRadius: "999px", minWidth: "120px",
                 border: "1px solid #e0e0e0", background: "rgba(255,255,255,0.92)",
