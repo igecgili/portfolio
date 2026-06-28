@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -38,8 +38,8 @@ function NavLink({ href, label }: { href: string; label: string }) {
 export default function FloatingUI() {
   const [showNav, setShowNav] = useState(false);
   const [showTop, setShowTop] = useState(false);
-  const [lastY, setLastY] = useState(0);
   const [navTop, setNavTop] = useState(18);
+  const lastYRef = useRef(0);
 
   useEffect(() => {
     const heroNav = document.getElementById("hero-nav");
@@ -53,12 +53,12 @@ export default function FloatingUI() {
     const onScroll = () => {
       const y = window.scrollY;
       setShowTop(y > 400);
-      setShowNav(y > 300 && y < lastY);
-      setLastY(y);
+      setShowNav(y > 300 && y < lastYRef.current);
+      lastYRef.current = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [lastY]);
+  }, []);
 
   return (
     <>
