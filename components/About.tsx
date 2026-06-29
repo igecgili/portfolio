@@ -13,7 +13,7 @@ const services = [
     desc: "Dijital baskı, emprime baskı, transfer baskı, nakış ve süzene metotlarında renk aşamasından ürünün final haline kadar gerekli proseslerde teknik bilgi ve deneyim sahibiyim.",
   },
   {
-    title: "AI GÖRSEL ÜRETİMİ",
+    title: "AI GÖRSEL & VİDEO ÜRETİMİ",
     desc: "Midjourney, Kling, Claude, Seedream ve Sora gibi araçlarla ürünün formunu, dokusunu ve kullanım hissini doğru şekilde aktaran, ticari sunuma hazır görseller tasarlıyorum.",
   },
   {
