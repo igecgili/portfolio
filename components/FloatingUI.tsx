@@ -68,7 +68,7 @@ export default function FloatingUI() {
             position: "fixed", top: navTop, left: 0, right: 0,
             display: "flex", justifyContent: "center",
             zIndex: 999, pointerEvents: "none",
-          }}>
+          }} className="floating-nav-desktop">
             <motion.div
               initial={{ y: -80, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}

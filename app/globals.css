@@ -55,6 +55,8 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 .project-card-img:hover .project-card-overlay { opacity: 1 !important; }
 
 .hakkimda-orbital-mobile { display: none; }
+.floating-nav-desktop { display: flex; }
+@media (max-width: 767px) { .floating-nav-desktop { display: none !important; } }
 
 @media (max-width: 767px) {
   .hakkimda-grid {
