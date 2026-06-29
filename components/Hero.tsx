@@ -92,16 +92,6 @@ export default function Hero() {
           display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "18px 20px", zIndex: 200,
         }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: "7px",
-            padding: "6px 14px", borderRadius: "999px",
-            background: "#fff", border: "1px solid #e0e0e0",
-            fontSize: "11px", fontWeight: 500, color: "#555",
-          }}>
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
-            Yeni Projeye Açığım
-          </div>
-
           <button
             onClick={() => setMenuOpen(o => !o)}
             style={{
