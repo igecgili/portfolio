@@ -5,20 +5,20 @@ import { useRef, useState } from "react";
 
 const services = [
   {
-    title: "DESEN & GRAFİK TASARIM",
-    desc: "Desen tasarımından grafik tasarıma, kurumsal kimlik çalışmalarından dijital tasarımlara uzanan geniş bir alanda; estetik, işlev ve ticari beklentileri buluşturan işler üretiyorum.",
-  },
-  {
-    title: "BASKI NAKIŞ UZMANLIĞI",
-    desc: "Dijital baskı, emprime baskı, transfer baskı, nakış ve süzene metotlarında renk aşamasından ürünün final haline kadar gerekli proseslerde teknik bilgi ve deneyim sahibiyim.",
-  },
-  {
     title: "AI GÖRSEL & VİDEO ÜRETİMİ",
     desc: "Midjourney, Kling, Claude, Seedream ve Sora gibi araçlarla ürünün formunu, dokusunu ve kullanım hissini doğru şekilde aktaran, ticari sunuma hazır görseller tasarlıyorum.",
   },
   {
+    title: "DESEN & GRAFİK TASARIM",
+    desc: "Desen tasarımından grafik tasarıma, kurumsal kimlik çalışmalarından dijital tasarımlara uzanan geniş bir alanda; estetik, işlev ve ticari beklentileri buluşturan işler üretiyorum.",
+  },
+  {
     title: "KURUMSAL KİMLİK",
     desc: "Markanın karakterini doğru yansıtan, uzun vadede sürdürülebilir görsel sistemler kuruyorum. Logo, renk sistemi, tipografi ve tüm temas noktalarında tutarlı bir görsel dil.",
+  },
+  {
+    title: "BASKI NAKIŞ UZMANLIĞI",
+    desc: "Dijital baskı, emprime baskı, transfer baskı, nakış ve süzene metotlarında renk aşamasından ürünün final haline kadar gerekli proseslerde teknik bilgi ve deneyim sahibiyim.",
   },
 ];
 
