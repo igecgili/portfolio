@@ -174,9 +174,8 @@ export default function Projects() {
                       muted
                       loop
                       playsInline
+                      autoPlay
                       style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-                      onMouseEnter={e => (e.currentTarget as HTMLVideoElement).play()}
-                      onMouseLeave={e => { (e.currentTarget as HTMLVideoElement).pause(); (e.currentTarget as HTMLVideoElement).currentTime = 0; }}
                     />
                   )}
                   {!thumb && (
