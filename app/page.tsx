@@ -4,6 +4,7 @@ import Hakkimda, { SkillsSection } from "@/components/Hakkimda";
 import Projects from "@/components/Projects";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
+import Sertifikalar from "@/components/Sertifikalar";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <Projects />
       <About />
       <Experience />
+      <Sertifikalar />
       <Contact />
     </main>
   );
