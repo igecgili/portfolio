@@ -21,24 +21,6 @@ export default function Contact() {
       textAlign: "center", position: "relative", overflow: "hidden",
     }}>
       <div style={{ position: "relative", zIndex: 1 }}>
-        {/* Available pill */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          style={{ display: "flex", justifyContent: "center", marginBottom: "28px" }}
-        >
-          <span style={{
-            display: "inline-flex", alignItems: "center", gap: "7px",
-            padding: "7px 16px", borderRadius: "999px",
-            border: "1px solid #e0e0e0", background: "#fff",
-            fontSize: "12px", fontWeight: 500, color: "#555",
-          }}>
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
-            Yeni Projelere Açığım
-          </span>
-        </motion.div>
-
         {/* Başlık */}
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
@@ -51,7 +33,7 @@ export default function Contact() {
             color: "#111", marginBottom: "16px",
           }}
         >
-          İLETİŞİME<br />GEÇELİM
+          İLETİŞİM
         </motion.h2>
 
         <motion.p
@@ -60,31 +42,8 @@ export default function Contact() {
           transition={{ duration: 0.7, delay: 0.25 }}
           style={{ fontSize: "14px", color: "#888", lineHeight: 1.8, maxWidth: "420px", margin: "0 auto 36px" }}
         >
-          Aşağıdaki kanallardan bana ulaşabilirsiniz. En hızlı yanıtı e-posta veya WhatsApp üzerinden alırsınız.
+          Aşağıdaki kanallardan bana ulaşabilirsiniz. En hızlı yanıtı e-posta veya WhatsApp üzerinden alabilirsiniz.
         </motion.p>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          style={{ marginBottom: "52px" }}
-        >
-          <a
-            href="mailto:igecgili@gmail.com"
-            style={{
-              display: "inline-flex", alignItems: "center", gap: "6px",
-              padding: "14px 28px", borderRadius: "999px",
-              background: "#111", color: "#fff",
-              fontSize: "14px", fontWeight: 600, textDecoration: "none",
-              transition: "opacity .2s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = "0.8")}
-            onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
-          >
-            igecgili@gmail.com ↗
-          </a>
-        </motion.div>
 
         {/* Sosyal pill'ler */}
         <motion.div
