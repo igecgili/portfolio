@@ -6,15 +6,15 @@ import { useRef } from "react";
 const sertifikalar = [
   {
     id: 1,
-    image: "", // Cloudinary URL buraya
-    title: "Sertifika Başlığı",
-    subtitle: "Kurum Adı • 2024",
+    image: "https://res.cloudinary.com/dqilpsjcc/image/upload/v1783546220/mkw2p64rqefeayzwuyk8.jpg",
+    title: "Figma Eğitimi: Temelden İleri Seviyeye",
+    subtitle: "UserGets • Mart 2025",
   },
   {
     id: 2,
-    image: "", // Cloudinary URL buraya
-    title: "Sertifika Başlığı",
-    subtitle: "Kurum Adı • 2024",
+    image: "https://res.cloudinary.com/dqilpsjcc/image/upload/v1783546057/ysc2fkak0wb6sf22wu43.jpg",
+    title: "Generative AI Specialist",
+    subtitle: "Global Cert / IATELS • Aralık 2025",
   },
 ];
 
