@@ -352,7 +352,7 @@ export default function Hero() {
         >
           <div style={{ maxWidth: "260px" }}>
             <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "20px", color: "#111", marginBottom: "8px", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
-              Tasarımcı & AI Üreticisi
+              Designer & AI Content Creator
             </p>
             <p style={{ fontSize: "13px", color: "#888", lineHeight: 1.75, marginBottom: "18px" }}>
               Grafik tasarım ve yapay zeka araçlarını<br />birleştirerek ticari değer yaratan<br />işler üretiyorum.
