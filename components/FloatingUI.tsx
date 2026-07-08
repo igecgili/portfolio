@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   ["#hakkimda", "Hakkımda"],
   ["#projects", "Çalışmalar"],
-  ["#services", "Hizmetler"],
+  ["#services", "Uzmanlıklarım"],
   ["#experience", "Deneyim"],
   ["#contact", "İletişim"],
 ];

@@ -81,7 +81,7 @@ export default function Hero() {
 
   const mask = `radial-gradient(circle ${RADIUS}px at ${photoMouse.x}px ${photoMouse.y}px, black 30%, transparent 100%)`;
 
-  const navLinks = [["#hakkimda","Hakkımda"],["#projects","Çalışmalar"],["#services","Hizmetler"],["#experience","Deneyim"],["#contact","İletişim"]];
+  const navLinks = [["#hakkimda","Hakkımda"],["#projects","Çalışmalar"],["#services","Uzmanlıklarım"],["#experience","Deneyim"],["#contact","İletişim"]];
 
   if (isMobile) {
     return (
