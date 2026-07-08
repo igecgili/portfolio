@@ -100,6 +100,35 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
           )}
         </div>
 
+        {/* Küçük resimler */}
+        {items.length > 1 && (
+          <div style={{
+            borderTop: "1px solid #222", padding: "12px 16px",
+            display: "flex", gap: "8px", overflowX: "auto",
+            scrollbarWidth: "none",
+          }}>
+            {items.map((item, i) => (
+              <button
+                key={i}
+                onClick={() => setIdx(i)}
+                style={{
+                  flexShrink: 0, width: "56px", height: "56px", borderRadius: "8px",
+                  overflow: "hidden", border: i === idx ? "2px solid #fff" : "2px solid transparent",
+                  padding: 0, cursor: "pointer", background: "#222", transition: "border-color 0.2s",
+                  position: "relative",
+                }}
+              >
+                {item.type === "image" ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={item.url} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                ) : (
+                  <div style={{ width: "100%", height: "100%", background: "#333", display: "flex", alignItems: "center", justifyContent: "center", color: "#888", fontSize: "18px" }}>▶</div>
+                )}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Açıklama — scroll edilebilir */}
         {project.description && (
           <div style={{ padding: "14px 24px", borderTop: "1px solid #222", maxHeight: "120px", overflowY: "auto" }}>
