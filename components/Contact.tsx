@@ -51,16 +51,16 @@ export default function Contact() {
             color: "#111", marginBottom: "16px",
           }}
         >
-          BİR PROJENİZ<br />Mİ VAR?
+          İLETİŞİME<br />GEÇELİM
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.25 }}
-          style={{ fontSize: "14px", color: "#888", lineHeight: 1.8, maxWidth: "400px", margin: "0 auto 36px" }}
+          style={{ fontSize: "14px", color: "#888", lineHeight: 1.8, maxWidth: "420px", margin: "0 auto 36px" }}
         >
-          Birlikte net ve etkili bir şey yaratabiliriz. Fikirlerin hayata geçmesi için buradayım.
+          Aşağıdaki kanallardan bana ulaşabilirsiniz. En hızlı yanıtı e-posta veya WhatsApp üzerinden alırsınız.
         </motion.p>
 
         {/* CTA */}
