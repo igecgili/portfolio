@@ -43,6 +43,11 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #111;
+  white-space: nowrap;
+  overflow: visible;
+}
+@media (max-width: 480px) {
+  .section-label { font-size: 1.4rem; letter-spacing: -0.01em; }
 }
 .section-label::before { content: '/'; color: #bbb; margin-right: 3px; }
 
