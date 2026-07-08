@@ -5,6 +5,12 @@ import { useRef, useState } from "react";
 
 const experiences = [
   {
+    company: "PRİVİLEGED COMPANY",
+    role: "E-Ticaret Operasyonları Uzmanı & AI Content Creator",
+    period: "2026 — Devam ediyor",
+    desc: "Privileged Company bünyesinde faaliyet gösteren dört farklı e-ticaret markasının operasyon süreçlerini uçtan uca yönettim. Shopify altyapılı mağazaların yönetimi, ürün süreçleri, dijital pazarlama ve marka geliştirme çalışmalarının yanı sıra yapay zekâ destekli içerik üretim süreçlerini yönettim.",
+  },
+  {
     company: "KOTON EKSPORT",
     role: "Baskı Nakış Uzmanı",
     period: "2025 — Devam ediyor",
