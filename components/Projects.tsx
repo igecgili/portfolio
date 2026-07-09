@@ -175,7 +175,7 @@ export default function Projects() {
           transition={{ duration: 0.7 }}
           style={{ marginBottom: "32px" }}
         >
-          <h2 className="section-label" style={{ marginBottom: "24px" }}>SEÇİLMİŞ ÇALIŞMALAR</h2>
+          <h2 className="section-label" style={{ marginBottom: "24px" }}>PROJELERİM</h2>
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
             <div style={{ display: "flex", gap: "8px" }}>
