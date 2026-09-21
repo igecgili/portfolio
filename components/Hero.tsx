@@ -304,39 +304,6 @@ export default function Hero() {
           </FitText>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          style={{
-            position: "absolute",
-            bottom: 0, left: 0, right: 0,
-            height: "94%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-end",
-            zIndex: 10,
-            pointerEvents: "none",
-          }}
-        >
-          <div
-            ref={photoRef}
-            onMouseMove={onPhotoMove}
-            onMouseLeave={onPhotoLeave}
-            style={{ position: "relative", height: "100%", pointerEvents: "auto" }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/photo2.png" alt="İsmail Geçgili" style={{ height: "100%", width: "auto", display: "block", filter: "grayscale(1)" }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/photo2.png" alt="" aria-hidden style={{
-              position: "absolute", top: 0, left: 0,
-              height: "100%", width: "100%",
-              display: "block",
-              WebkitMaskImage: mask,
-              maskImage: mask,
-            }} />
-          </div>
-        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
