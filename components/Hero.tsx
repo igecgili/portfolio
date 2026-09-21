@@ -20,33 +20,33 @@ const socials = [
 
 const RADIUS = 220;
 
-function FitText({ children }: { children: React.ReactNode }) {
+function FitText({ first, second }: { first: React.ReactNode; second: React.ReactNode }) {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const fit = () => {
       const wrap = wrapRef.current;
       const inner = innerRef.current;
       if (!wrap || !inner) return;
-      inner.style.fontSize = "300px";
-      const ratio = (wrap.offsetWidth / inner.scrollWidth) * 0.96;
-      inner.style.fontSize = Math.floor(300 * ratio) + "px";
+      inner.style.fontSize = "200px";
+      // inline-block span gives accurate natural scrollWidth
+      const naturalW = inner.getBoundingClientRect().width;
+      const availW = wrap.getBoundingClientRect().width;
+      if (!naturalW) return;
+      const px = Math.floor(200 * (availW / naturalW) * 0.97);
+      inner.style.fontSize = px + "px";
     };
-    const runFit = () => {
-      fit();
-      // re-run after fonts load to handle font metric race condition
-      document.fonts.ready.then(fit);
-    };
-    runFit();
-    const ro = new ResizeObserver(runFit);
+    fit();
+    document.fonts.ready.then(fit);
+    const ro = new ResizeObserver(fit);
     if (wrapRef.current) ro.observe(wrapRef.current);
     return () => ro.disconnect();
   }, []);
 
   return (
-    <div ref={wrapRef} style={{ width: "100%" }}>
-      <div
+    <div ref={wrapRef} style={{ width: "100%", textAlign: "center" }}>
+      <span
         ref={innerRef}
         style={{
           fontFamily: "'Syne', sans-serif",
@@ -54,13 +54,13 @@ function FitText({ children }: { children: React.ReactNode }) {
           letterSpacing: "-0.03em",
           lineHeight: 0.88,
           whiteSpace: "nowrap",
-          display: "flex",
-          justifyContent: "center",
-          gap: "0.15em",
+          display: "inline-block",
         }}
       >
-        {children}
-      </div>
+        <span style={{ color: "transparent", WebkitTextStroke: "2px #111" }}>{first}</span>
+        <span style={{ display: "inline-block", width: "0.15em" }} />
+        <span style={{ color: "#111" }}>{second}</span>
+      </span>
     </div>
   );
 }
@@ -307,10 +307,7 @@ export default function Hero() {
             zIndex: 5,
           }}
         >
-          <FitText>
-            <span style={{ color: "transparent", WebkitTextStroke: "2px #111" }}>İSMAİL</span>
-            <span style={{ color: "#111" }}>GEÇGİLİ</span>
-          </FitText>
+          <FitText first="İSMAİL" second="GEÇGİLİ" />
         </motion.div>
 
 
