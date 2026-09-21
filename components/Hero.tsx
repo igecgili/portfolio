@@ -50,7 +50,8 @@ function FitText({ children }: { children: React.ReactNode }) {
           lineHeight: 0.88,
           whiteSpace: "nowrap",
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
+          gap: "0.15em",
         }}
       >
         {children}
