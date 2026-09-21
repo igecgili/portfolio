@@ -284,18 +284,14 @@ export default function Hero() {
       </nav>
 
       {/* MAIN */}
-      <div style={{ flex: 1, position: "relative" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 5% 48px", textAlign: "center" }}>
+
+        {/* İsim */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          style={{
-            position: "absolute",
-            top: "50%",
-            transform: "translateY(-52%)",
-            left: "5%", right: "5%",
-            zIndex: 5,
-          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          style={{ width: "100%", marginBottom: "24px" }}
         >
           <FitText>
             <span style={{ color: "transparent", WebkitTextStroke: "2px #111" }}>İSMAİL</span>
@@ -303,84 +299,61 @@ export default function Hero() {
           </FitText>
         </motion.div>
 
+        {/* Unvan & açıklama */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          style={{
-            position: "absolute",
-            bottom: 0, left: 0, right: 0,
-            height: "94%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-end",
-            zIndex: 10,
-            pointerEvents: "none",
-          }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          style={{ marginBottom: "32px" }}
         >
-          <div
-            ref={photoRef}
-            onMouseMove={onPhotoMove}
-            onMouseLeave={onPhotoLeave}
-            style={{ position: "relative", height: "100%", pointerEvents: "auto" }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/photo2.png" alt="İsmail Geçgili" style={{ height: "100%", width: "auto", display: "block", filter: "grayscale(1)" }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/photo2.png" alt="" aria-hidden style={{
-              position: "absolute", top: 0, left: 0,
-              height: "100%", width: "100%",
-              display: "block",
-              WebkitMaskImage: mask,
-              maskImage: mask,
-            }} />
-          </div>
+          <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(1rem, 2.5vw, 1.4rem)", color: "#111", marginBottom: "10px", letterSpacing: "-0.02em" }}>
+            Designer & AI Content Creator
+          </p>
+          <p style={{ fontSize: "14px", color: "#888", lineHeight: 1.75, maxWidth: "480px", margin: "0 auto" }}>
+            Grafik tasarım ve yapay zeka araçlarını birleştirerek ticari değer yaratan işler üretiyorum.
+          </p>
         </motion.div>
 
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center", marginBottom: "40px" }}
+        >
+          <a href="#contact" style={{
+            display: "inline-flex", alignItems: "center", gap: "6px",
+            padding: "12px 26px", borderRadius: "999px",
+            background: "#111", color: "#fff", textDecoration: "none", fontSize: "13px", fontWeight: 600,
+          }}>Birlikte Çalışalım ↗</a>
+          <a href="#projects" style={{
+            display: "inline-flex", alignItems: "center", gap: "6px",
+            padding: "12px 26px", borderRadius: "999px",
+            border: "1px solid #ddd", background: "#fff", color: "#444", textDecoration: "none", fontSize: "13px", fontWeight: 500,
+          }}>Çalışmalarım</a>
+        </motion.div>
+
+        {/* Sosyal linkler */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 1.0 }}
-          style={{
-            position: "absolute",
-            bottom: 28, left: "5%", right: "5%",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            zIndex: 20,
-          }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          style={{ display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center" }}
         >
-          <div style={{ maxWidth: "260px" }}>
-            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "20px", color: "#111", marginBottom: "8px", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
-              Designer & AI Content Creator
-            </p>
-            <p style={{ fontSize: "13px", color: "#888", lineHeight: 1.75, marginBottom: "18px" }}>
-              Grafik tasarım ve yapay zeka araçlarını<br />birleştirerek ticari değer yaratan<br />işler üretiyorum.
-            </p>
-            <a href="#contact" style={{
+          {socials.map(({ label, icon, href }) => (
+            <a key={label} href={href} title={label} target="_blank" rel="noreferrer" style={{
               display: "inline-flex", alignItems: "center", gap: "6px",
-              padding: "11px 22px", borderRadius: "999px",
-              background: "#111", color: "#fff", textDecoration: "none", fontSize: "13px", fontWeight: 600,
-            }}>Birlikte Çalışalım ↗</a>
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-end" }}>
-            {socials.map(({ label, icon, href }) => (
-              <a key={label} href={href} title={label} target="_blank" rel="noreferrer" style={{
-                display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px",
-                padding: "8px 14px", borderRadius: "999px", minWidth: "120px",
-                border: "1px solid #e0e0e0", background: "rgba(255,255,255,0.92)",
-                color: "#555", textDecoration: "none", fontSize: "12px", fontWeight: 500,
-                transition: "all .2s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.background = "#111"; e.currentTarget.style.color = "#fff"; e.currentTarget.style.borderColor = "#111"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.92)"; e.currentTarget.style.color = "#555"; e.currentTarget.style.borderColor = "#e0e0e0"; }}
-              >
-                {icon}
-                {label}
-              </a>
-            ))}
-          </div>
+              padding: "7px 16px", borderRadius: "999px",
+              border: "1px solid #e0e0e0", background: "rgba(255,255,255,0.92)",
+              color: "#555", textDecoration: "none", fontSize: "12px", fontWeight: 500,
+              transition: "all .2s",
+            }}
+              onMouseEnter={e => { e.currentTarget.style.background = "#111"; e.currentTarget.style.color = "#fff"; e.currentTarget.style.borderColor = "#111"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.92)"; e.currentTarget.style.color = "#555"; e.currentTarget.style.borderColor = "#e0e0e0"; }}
+            >
+              {icon}{label}
+            </a>
+          ))}
         </motion.div>
       </div>
     </section>
