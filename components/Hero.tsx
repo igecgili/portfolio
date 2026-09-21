@@ -30,17 +30,22 @@ function FitText({ children }: { children: React.ReactNode }) {
       const inner = innerRef.current;
       if (!wrap || !inner) return;
       inner.style.fontSize = "300px";
-      const ratio = (wrap.offsetWidth / inner.scrollWidth) * 0.82;
+      const ratio = (wrap.offsetWidth / inner.scrollWidth) * 0.96;
       inner.style.fontSize = Math.floor(300 * ratio) + "px";
     };
-    fit();
-    const ro = new ResizeObserver(fit);
+    const runFit = () => {
+      fit();
+      // re-run after fonts load to handle font metric race condition
+      document.fonts.ready.then(fit);
+    };
+    runFit();
+    const ro = new ResizeObserver(runFit);
     if (wrapRef.current) ro.observe(wrapRef.current);
     return () => ro.disconnect();
   }, []);
 
   return (
-    <div ref={wrapRef} style={{ width: "100%", overflow: "hidden" }}>
+    <div ref={wrapRef} style={{ width: "100%" }}>
       <div
         ref={innerRef}
         style={{
@@ -143,59 +148,63 @@ export default function Hero() {
         <section style={{
           background: "#fff", borderRadius: "20px", overflow: "hidden",
           height: "calc(100svh - 16px)", minHeight: "580px", position: "relative",
+          display: "flex", flexDirection: "column",
         }}>
 
-        {/* Tam ekran fotoğraf — beyaz arka planlı */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/photo_clean.png" alt="İsmail Geçgili" style={{
-          position: "absolute", inset: 0, width: "100%", height: "100%",
-          objectFit: "cover", objectPosition: "center top",
-          filter: "grayscale(1)", zIndex: 1,
-        }} />
+        {/* Aurora arka plan */}
+        <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0 }}>
+          <div style={{
+            position: "absolute", inset: "-10px",
+            backgroundImage: "repeating-linear-gradient(100deg,#fff 0%,#fff 7%,transparent 10%,transparent 12%,#fff 16%), repeating-linear-gradient(100deg,#93c5fd 10%,#a5b4fc 15%,#bfdbfe 20%,#ddd6fe 25%,#60a5fa 30%)",
+            backgroundSize: "300%, 200%",
+            backgroundPosition: "50% 50%, 50% 50%",
+            filter: "blur(10px)",
+            opacity: 0.5,
+            maskImage: "radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%)",
+          }} className="animate-aurora" />
+        </div>
 
-        {/* Alt gradient — yazılar okunabilsin */}
-        <div style={{
-          position: "absolute", inset: 0, zIndex: 2,
-          background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0) 70%)",
-        }} />
+        {/* İsim — ekranın ortasında büyük */}
+        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", position: "relative", zIndex: 5 }}>
+          <div style={{ width: "100%", textAlign: "center" }}>
+            <h1 style={{
+              fontFamily: "'Syne', sans-serif", fontWeight: 800,
+              fontSize: "clamp(52px, 18vw, 80px)",
+              letterSpacing: "-0.03em", lineHeight: 0.92,
+              color: "transparent", WebkitTextStroke: "2px #111",
+              margin: "0 0 4px 0",
+            }}>İSMAİL</h1>
+            <h1 style={{
+              fontFamily: "'Syne', sans-serif", fontWeight: 800,
+              fontSize: "clamp(52px, 18vw, 80px)",
+              letterSpacing: "-0.03em", lineHeight: 0.92,
+              color: "#111", margin: 0,
+            }}>GEÇGİLİ</h1>
+          </div>
+        </div>
 
-        {/* İçerik */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "0 24px 40px", zIndex: 10 }}>
-          {/* Etiket */}
-          <p style={{ fontSize: "11px", letterSpacing: "0.14em", color: "rgba(255,255,255,0.6)", fontWeight: 600, marginBottom: "12px" }}>
-            TASARIMCI & AI ÜRETİCİSİ
+        {/* Alt kısım — bilgi ve butonlar */}
+        <div style={{ padding: "0 24px 40px", position: "relative", zIndex: 10 }}>
+          <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "16px", color: "#111", marginBottom: "6px", letterSpacing: "-0.01em" }}>
+            Designer & AI Content Creator
           </p>
-
-          <h1 style={{
-            fontFamily: "'Syne', sans-serif", fontWeight: 800,
-            fontSize: "clamp(44px, 14vw, 64px)",
-            letterSpacing: "-0.03em", lineHeight: 0.95,
-            color: "#fff", margin: "0 0 6px 0",
-          }}>İsmail</h1>
-          <h1 style={{
-            fontFamily: "'Syne', sans-serif", fontWeight: 800,
-            fontSize: "clamp(44px, 14vw, 64px)",
-            letterSpacing: "-0.03em", lineHeight: 0.95,
-            color: "#fff", margin: "0 0 20px 0",
-          }}>Geçgili</h1>
-
-          <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.7, marginBottom: "28px" }}>
+          <p style={{ fontSize: "13px", color: "#888", lineHeight: 1.7, marginBottom: "20px" }}>
             Grafik tasarım ve yapay zeka araçlarını<br />birleştirerek ticari değer yaratan işler üretiyorum.
           </p>
 
-          {/* Butonlar */}
           <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
             <a href="#contact" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "13px 24px", borderRadius: "999px",
-              background: "#fff", color: "#111", textDecoration: "none", fontSize: "13px", fontWeight: 700,
+              background: "#111", color: "#fff", textDecoration: "none", fontSize: "13px", fontWeight: 700,
             }}>Birlikte Çalışalım ↗</a>
             <a href="https://wa.me/905535017666" target="_blank" rel="noreferrer" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "13px 20px", borderRadius: "999px",
-              background: "rgba(255,255,255,0.15)", color: "#fff",
+              background: "transparent", color: "#111",
               textDecoration: "none", fontSize: "13px", fontWeight: 600,
-              border: "1px solid rgba(255,255,255,0.3)",
+              border: "1px solid #d0d0d0",
             }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.508 5.837L.057 23.25a.75.75 0 0 0 .916.921l5.562-1.479A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.714 9.714 0 0 1-4.95-1.355l-.354-.212-3.664.973.986-3.587-.231-.371A9.712 9.712 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
               WhatsApp
